@@ -4,7 +4,6 @@ vendor/
 .project
 .settings/
 .idea
-composer.lock
 debian/pci/
 debian/*.debhelper
 debian/*.substvars
