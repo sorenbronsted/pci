@@ -1,0 +1,16 @@
+Source: pci
+Section: unknown
+Priority: extra
+Maintainer: Søren Brønsted <sbr@ufds.dk>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+
+Package: pci
+Architecture: all
+Depends: ${misc:Depends},
+ apache2, 
+ mysql-server, 
+ php5, 
+ php5-mysql,
+ libapache2-mod-php5,
+Description: Php Continuious Integration

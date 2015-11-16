@@ -1,0 +1,15 @@
+Template: pci/dbUser
+Type: string
+Default: root
+Description: Database User
+ The user allowed to connect to the mysql database
+
+Template: pci/dbPassword
+Type: password
+Description: Database Password
+ The password for the user allowed to connect to the mysql database
+
+Template: pci/virtualHostname
+Type: string
+Description: Virtual hostname
+ The apache virtual hostname

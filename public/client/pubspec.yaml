@@ -1,0 +1,7 @@
+name: phpci
+description: phpci
+dependencies:
+  browser: any
+  webui:
+#    git: http://dev.ufds.lan/git/webui.git
+    path: /home/sb/projects/ufds/webui

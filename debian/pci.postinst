@@ -1,0 +1,59 @@
+#!/bin/sh
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+db_get pci/dbUser
+dbUser=$RET
+
+db_get pci/dbPassword
+dbPassword=$RET
+	
+db_get pci/virtualHostname
+vhost=$RET
+
+cd /var/www/pci
+
+iniSetup () {
+	confFile="/etc/ufds/pci.ini"
+	tmpFile="/tmp/pci.ini"
+	cat $confFile | \
+		sed -e "s/DBUSER/${dbUser}/" \
+		-e "s/DBPASSWORD/${dbPassword}/" \
+		> $tmpFile
+  	mv $tmpFile $confFile
+	
+    dbExists=`echo "show databases" | mysql -u$dbUser -p$dbPassword | grep ^pci | wc -l`
+    if [ $dbExists -eq 0 ]
+    then
+        mysql -u$dbUser -p$dbPassword < database/sql/create_db.sql
+    fi
+}
+
+apacheSetup () {
+	confFile="/etc/apache2/sites-available/pci.conf"
+	tmpFile="/tmp/pci.conf"
+	cat $confFile | sed -e "s/VHOST/${vhost}.ufds.lan/" -e "s/AHOST/${vhost}/" > $tmpFile
+	mv $tmpFile $confFile
+	a2ensite pci.conf
+	a2enmod rewrite
+}
+
+case "$1" in
+	configure)
+		iniSetup
+		php -f vendor/bin/ruckus.php db:migrate
+		apacheSetup
+	;;
+
+  abort-upgrade|abort-remove|abort-deconfigure)
+    exit 0
+  ;;
+
+  *)
+    echo "postinst called with unknown argument \`$1'" >&2
+    exit 1
+  ;;
+
+esac
