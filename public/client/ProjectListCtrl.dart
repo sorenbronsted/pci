@@ -5,7 +5,6 @@ class ProjectListCtrl extends DefaultListCtrl {
 
   ProjectListCtrl() : super(new ProjectListView(), "Project");
 
-
   void register(EventBus eventBus) {
     super.register(eventBus);
     eventBus.listenOn(JobListener.eventJobStateChange, stateChange);

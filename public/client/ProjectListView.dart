@@ -15,7 +15,7 @@ class ProjectListView extends DefaultListView {
   }
 
   onTableCellValue(TableCellElement cell, String column, Map row) {
-    if (column == 'Project-build') {
+    if (column == 'build') {
       var a = new AnchorElement();
       a.classes.addAll(['btn', 'btn-primary', 'btn-xs']);
       a.href = "/#list/Project/${row['uid']}/build";

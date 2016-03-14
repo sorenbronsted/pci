@@ -1,7 +1,6 @@
-name: phpci
-description: phpci
+name: pci
+description: pci
 dependencies:
   browser: any
   webui:
-#    git: http://dev.ufds.lan/git/webui.git
-    path: /home/sb/projects/ufds/webui
+    git: http://dev.ufds.lan/git/webui.git

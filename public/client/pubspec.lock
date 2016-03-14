@@ -7,7 +7,8 @@ packages:
     version: "0.10.0+2"
   webui:
     description:
-      path: "/home/sb/projects/ufds/webui"
-      relative: false
-    source: path
-    version: "2.15.0"
+      ref: null
+      resolved-ref: "38c29d48e3d0630e12743af220b6e8ee4728829a"
+      url: "http://dev.ufds.lan/git/webui.git"
+    source: git
+    version: "2.18.0"

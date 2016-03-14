@@ -2,7 +2,7 @@ Source: pci
 Section: unknown
 Priority: extra
 Maintainer: Søren Brønsted <sbr@ufds.dk>
-Build-Depends: debhelper (>= 8.0.0)
+Build-Depends: debhelper (>= 8.0.0), rsync
 Standards-Version: 3.9.4
 
 Package: pci

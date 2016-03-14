@@ -4,7 +4,7 @@ class JobResultDetailView extends DefaultDetailView {
 
   void registerBindings() {
     super.registerBindings();
-    addBinding(new UiButtonBinding('button[name="back"]', false));
+    addBinding(new UiButtonBinding('#back', false));
   }
 }
 

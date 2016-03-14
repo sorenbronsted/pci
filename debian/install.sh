@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 #set -x
 
 if [ $# -ne 1 ]
@@ -12,11 +13,18 @@ appdir="var/www/pci"
 dest=$1
 
 #
-# Copy files
-dirs="application database public readme.txt ruckusing.conf.php utils vendor"
+# Copy dirs
+dirs="application database public scripts vendor"
 for dir in $dirs
 do
-  rsync -a --exclude=".git*" $dir $dest/$appdir
+  cp -r $dir $dest/$appdir
+done
+
+# Copy files
+files="readme.txt ruckusing.conf.php"
+for file in $files
+do
+  cp $file $dest/$appdir
 done
 
 #
@@ -26,9 +34,9 @@ cp conf/htaccess $dest/$appdir/public/.htaccess
 
 #
 # Application config
-cp conf/cms.ini $dest/etc/ufds/
+cp conf/pci.ini $dest/etc/ufds/
 
 #
 # Apache config
-cp conf/cms.conf $dest/etc/apache2/sites-available/
+cp conf/pci.conf $dest/etc/apache2/sites-available/
 

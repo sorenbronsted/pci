@@ -1,8 +1,11 @@
 <?php
-require_once 'public/settings.php';
+require_once 'vendor/autoload.php' ;
+require_once 'vendor/ufds/libutil/di/DiContainer.php' ;
+require_once 'vendor/ufds/libutil/config/Config2.php' ;
 
 date_default_timezone_set("Europe/Copenhagen");
 $dic = DiContainer::instance();
+$dic->config = new Config2('/etc/ufds/pci.ini');
 
 //----------------------------
 // DATABASE CONFIGURATION

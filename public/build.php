@@ -1,5 +1,8 @@
 <?php
 
+// Must always be in the public directory
+chdir(__DIR__);
+
 require_once 'settings.php';
 
 if (php_sapi_name() == 'cli') {

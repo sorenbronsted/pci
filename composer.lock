@@ -1,0 +1,170 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "bf0b46765449f1ae2039603e399108af",
+    "content-hash": "07e4fac18c7531ca937aca179e3882cb",
+    "packages": [
+        {
+            "name": "ruckusing/ruckusing-migrations",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://dev/git/ufds/ruckusing-migrations.git",
+                "reference": "7317d53932045026d74bf6873dd483dec1248041"
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "bin": [
+                "ruckus.php"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Ruckusing": "lib/",
+                    "Task": "lib/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "email": "codycaughlan@gmail.com",
+                    "homepage": "https://github.com/ruckus/ruckusing-migrations/wiki",
+                    "name": "Cody Caughlan",
+                    "role": "Project lead / Developer"
+                }
+            ],
+            "description": "Framework for generating and managing database migrations",
+            "homepage": "https://github.com/ruckus/ruckusing-migrations",
+            "keywords": [
+                "database",
+                "migrations",
+                "mysql",
+                "postgres",
+                "rake",
+                "ruckusing",
+                "task"
+            ],
+            "support": {
+                "email": "codycaughlan@gmail.com",
+                "issues": "https://github.com/ruckus/ruckusing-migrations/issues",
+                "source": "https://github.com/ruckus/ruckusing-migrations"
+            },
+            "time": "2016-02-01 10:34:20"
+        },
+        {
+            "name": "ufds/libcommon",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://dev/git/ufds/libcommon.git",
+                "reference": "dafdfe8f7ed7891a6c56369ab2aef4071cee0d5f"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "common/"
+                ]
+            },
+            "license": [
+                "UFDS privat"
+            ],
+            "description": "UFDS common library",
+            "time": "2015-12-11 13:57:53"
+        },
+        {
+            "name": "ufds/libdatabase",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://dev/git/ufds/libdatabase.git",
+                "reference": "5905ebb81cda71fbc4f1d3e7235be2349c5b6a73"
+            },
+            "require": {
+                "ruckusing/ruckusing-migrations": "dev-master",
+                "ufds/libcommon": "dev-master",
+                "ufds/libtypes": "dev-master",
+                "ufds/libutil": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "dbobject/"
+                ]
+            },
+            "license": [
+                "UFDS privat"
+            ],
+            "description": "Generel ORM mapper baseret på PDO",
+            "time": "2015-12-11 15:05:32"
+        },
+        {
+            "name": "ufds/libtypes",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://dev/git/ufds/libtypes.git",
+                "reference": "5420fa3116083bfa47c4755363fa622bc660e7c4"
+            },
+            "require": {
+                "ufds/libcommon": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "types/"
+                ]
+            },
+            "license": [
+                "UFDS privat"
+            ],
+            "description": "UFDS standard types",
+            "time": "2015-12-11 14:59:52"
+        },
+        {
+            "name": "ufds/libutil",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://dev/git/ufds/libutil.git",
+                "reference": "673c8913dee539ce83891a9270cfc205a6b697f0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "config/",
+                    "di/",
+                    "log/",
+                    "lpr/"
+                ]
+            },
+            "license": [
+                "UFDS privat"
+            ],
+            "description": "Package of utils",
+            "time": "2015-12-09 15:29:28"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "ruckusing/ruckusing-migrations": 20,
+        "ufds/libdatabase": 20,
+        "ufds/libtypes": 20,
+        "ufds/libcommon": 20,
+        "ufds/libutil": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
