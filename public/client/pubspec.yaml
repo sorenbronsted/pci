@@ -3,4 +3,4 @@ description: pci
 dependencies:
   browser: any
   webui:
-    git: http://dev.ufds.lan/git/webui.git
+    git: http://dev/git/ufds/webui.git

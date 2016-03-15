@@ -1,5 +1,6 @@
-
+#!/bin/sh
 set -e
+
 root=/var/www/repo
 dist=test
 dest=$root/$dist
