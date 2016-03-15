@@ -3,7 +3,7 @@
 SHELL=/bin/bash
 
 all: depend js migrate coverage package
-	echo "Up-to-date"
+	@echo "Up-to-date"
 
 clean:
 	bin/clean.sh

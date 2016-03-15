@@ -24,8 +24,9 @@ class Job extends ModelObject {
 		$result->build_id = $buildId;
 		$result->setState(JobState::RUNNING);
 
+		DiContainer::instance()->log->debug(__CLASS__,"Running: ".$this->cmd);
 		$result->log = '';
-		$ph = popen($this->cmd, 'r');
+		$ph = popen($this->cmd." 2>&1", 'r');
 		if ($ph === false) {
 			$result->log = 'popen failed';
 			$result->setState(JobState::FAILED);

@@ -34,7 +34,7 @@ iniSetup () {
 apacheSetup () {
 	confFile="/etc/apache2/sites-available/pci.conf"
 	tmpFile="/tmp/pci.conf"
-	cat $confFile | sed -e "s/VHOST/${vhost}.ufds.lan/" -e "s/AHOST/${vhost}/" > $tmpFile
+	cat $confFile | sed -e "s/VHOST/${vhost}/" -e "s/AHOST/${vhost}/" > $tmpFile
 	mv $tmpFile $confFile
 	a2ensite pci.conf
 	a2enmod rewrite

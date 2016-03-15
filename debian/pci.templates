@@ -11,5 +11,6 @@ Description: Database Password
 
 Template: pci/virtualHostname
 Type: string
+Default: pci
 Description: Virtual hostname
  The apache virtual hostname
