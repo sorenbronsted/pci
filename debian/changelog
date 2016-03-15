@@ -1,3 +1,9 @@
+pci (0.3) wily; urgency=medium
+
+  * Config changes
+
+ -- Søren Brønsted <sbr@ufds.dk>  Tue, 15 Mar 2016 13:12:02 +0100
+
 pci (0.2) wily; urgency=medium
 
   * Url change for pub
