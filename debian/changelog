@@ -1,3 +1,10 @@
+pci (0.2) wily; urgency=medium
+
+  * Url change for pub
+  * Change for build system
+
+ -- Søren Brønsted <sbr@ufds.dk>  Tue, 15 Mar 2016 10:40:13 +0100
+
 pci (0.1) test; urgency=medium
 
   * Initial release.
