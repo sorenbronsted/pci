@@ -65,32 +65,28 @@ class Project extends ModelObject {
 	}
 
 	protected function onJsonEncode($data) {
-		$sql = 	"select t.build_id, min(jr.uid) min_uid, max(jr.uid) max_uid ".
-						"from (select p.uid, max(jr.build_id) build_id ".
-						"	from project p ".
-						"	join job j on p.uid = j.project_uid ".
-						"	join jobresult jr on j.uid = jr.job_uid ".
-						"	where p.uid = ? ".
-						"	group by p.uid ".
-						") t ".
-						"join jobresult jr on t.build_id = jr.build_id ".
-						"group by build_id";
+		$sql = "select min(jr.start) start, max(jr.stop) stop, max(jobstate_uid) jobstate_uid ".
+					"from project p ".
+					"join job j on p.uid = j.project_uid ".
+					"join jobresult jr on j.uid = jr.job_uid ".
+					"join buildidgenerator b on b.project_uid = p.uid and jr.build_id = b.build_id ".
+					"where p.uid = ? ";
+
 		$cursor = Db::prepareQuery(self::$db, $sql, array($this->uid));
 		if (!$cursor->hasNext()) {
 			return $data;
 		}
 		$row = $cursor->next();
-		$jrMin = JobResult::getByUid($row['min_uid']);
-		$jrMax = JobResult::getByUid($row['max_uid']);
+		$start = Timestamp::parse($row['start']);
+		$data['start'] = $start;
 
-		$data['start'] = $jrMin->start->toString();
-
-		if ($jrMax->stop != null) {
-			$data['stop'] = $jrMax->stop->toString();
-			$data['jobstate_uid'] = $jrMax->jobstate_uid;
-			$seconds = $jrMax->stop->diff($jrMin->start);
+		if (isset($row['stop'])) {
+			$stop = Timestamp::parse($row['stop']);
+			$data['stop'] = $stop;
+			$data['jobstate_uid'] = $row['jobstate_uid'];
+			$seconds = $stop->diff($start);
 			$h = floor($seconds/3600);
-			$m = floor($seconds/60);
+			$m = floor(($seconds - ($h*3600))/60);
 			$s = $seconds - ($h*3600) - ($m*60);
 			$data['duration'] = "$h:$m:$s";
 		}
