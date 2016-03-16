@@ -1,3 +1,10 @@
+pci (0.4) wily; urgency=medium
+
+  * Updated readme
+  * Fixed wrong duration calculation
+
+ -- Søren Brønsted <sbr@ufds.dk>  Wed, 16 Mar 2016 12:26:07 +0100
+
 pci (0.3) wily; urgency=medium
 
   * Config changes
