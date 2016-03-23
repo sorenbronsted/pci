@@ -1,6 +1,6 @@
 <?php
 
-$loader = require '../vendor/autoload.php'; // Use composer autoloading
+$loader = require dirname(__DIR__).'/vendor/autoload.php'; // Use composer autoloading
 
 $dic = DiContainer::instance();
 $dic->config = new Config2('/etc/ufds/pci.ini');

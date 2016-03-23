@@ -1,11 +1,5 @@
 <?php
-require_once 'vendor/autoload.php' ;
-require_once 'vendor/ufds/libutil/di/DiContainer.php' ;
-require_once 'vendor/ufds/libutil/config/Config2.php' ;
-
-date_default_timezone_set("Europe/Copenhagen");
-$dic = DiContainer::instance();
-$dic->config = new Config2('/etc/ufds/pci.ini');
+require_once 'public/settings.php';
 
 //----------------------------
 // DATABASE CONFIGURATION
@@ -22,10 +16,10 @@ return array(
         'charset'   => $dic->config->defaultDb_charset
       ),
     ),
-  'ruckusing_base' => dirname(__FILE__) . '/vendor/ruckusing/ruckusing-migrations',
+  'ruckusing_base' => __DIR__.'/vendor/ruckusing/ruckusing-migrations',
   'migrations_dir' => RUCKUSING_WORKING_BASE . '/database',
   'db_dir' => RUCKUSING_WORKING_BASE . '/db',
-  'log_dir' => '/tmp/logs',
+  'log_dir' => '/tmp',
 );
 
 ?>

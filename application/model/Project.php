@@ -77,13 +77,11 @@ class Project extends ModelObject {
 			return $data;
 		}
 		$row = $cursor->next();
-		$start = Timestamp::parse($row['start']);
-		$data['start'] = $start;
+		$data = array_merge($data, $row);
 
 		if (isset($row['stop'])) {
+			$start = Timestamp::parse($row['start']);
 			$stop = Timestamp::parse($row['stop']);
-			$data['stop'] = $stop;
-			$data['jobstate_uid'] = $row['jobstate_uid'];
 			$seconds = $stop->diff($start);
 			$h = floor($seconds/3600);
 			$m = floor(($seconds - ($h*3600))/60);
