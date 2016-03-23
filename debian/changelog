@@ -1,3 +1,9 @@
+pci (0.4-1) wily; urgency=medium
+
+  * Ported to new build system
+
+ -- Søren Brønsted <sbr@ufds.dk>  Wed, 23 Mar 2016 16:13:12 +0100
+
 pci (0.4) wily; urgency=medium
 
   * Updated readme
