@@ -1,3 +1,13 @@
+pci (0.5-1) wily; urgency=medium
+
+  * Fixed build not working
+  * Fixed correct order by
+  * Fixed not showing the latest build status
+  * Update to latest
+  * More logical order of columns
+
+ -- Søren Brønsted <sbr@ufds.dk>  Wed, 30 Mar 2016 16:13:06 +0200
+
 pci (0.4-1) wily; urgency=medium
 
   * Ported to new build system
