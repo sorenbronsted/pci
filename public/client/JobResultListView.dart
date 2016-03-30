@@ -5,7 +5,7 @@ class JobResultListView extends DefaultListView {
 
   void registerBindings() {
     super.registerBindings();
-    addBinding(new UiButtonBinding('button[name="build"]', false));
+    addBinding(new UiButtonBinding('#build', false));
   }
 
   void set jobResults(jobs) => populate(jobs);
