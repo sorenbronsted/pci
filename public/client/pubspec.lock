@@ -2,14 +2,16 @@
 # See http://pub.dartlang.org/doc/glossary.html#lockfile
 packages:
   browser:
-    description: browser
+    description:
+      name: browser
+      url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.0+2"
   webui:
     description:
       ref: HEAD
-      resolved-ref: "37234a1aa01964b2dd585cd7aa7e01be1b91873e"
+      resolved-ref: f62e0d7c89c878c12c29167cf81b2b61604c32a7
       url: "http://dev/git/ufds/webui.git"
     source: git
-    version: "2.19.0"
+    version: "2.19.1"
 sdk: ">=1.3.0-dev.4.1 <2.0.0"
