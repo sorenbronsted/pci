@@ -80,7 +80,7 @@ class Project extends ModelObject {
 		$row['jobstate_uid'] = intval($row['jobstate_uid']);
 		$data = array_merge($data, $row);
 
-		if (isset($row['stop'])) {
+		if (isset($row['stop']) && $row['jobstate_uid'] != JobState::RUNNING) {
 			$start = Timestamp::parse($row['start']);
 			$stop = Timestamp::parse($row['stop']);
 			$seconds = $stop->diff($start);
