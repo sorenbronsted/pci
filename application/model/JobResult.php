@@ -37,7 +37,7 @@ class JobResult extends ModelObject {
 
 	public static function getByProjectUid($projectUid) {
 		$sql = "select jr.* from jobresult jr join job j on j.uid = jr.job_uid ".
-					 "where j.project_uid = ? order by jr.build_id desc, jr.jobstate_uid asc, jr.uid desc limit 50";
+					 "where j.project_uid = ? order by jr.build_id desc, jr.jobstate_uid asc, jr.uid desc, jr.stop desc limit 50";
 		return self::getObjects($sql,array('project_uid' => $projectUid));
 	}
 
