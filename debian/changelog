@@ -1,3 +1,11 @@
+pci (0.6-1ubuntu1) wily; urgency=medium
+
+  * Changed order on project list
+  * Correct ordering on results
+  * No calculation when job is running
+
+ -- Søren Brønsted <sbr@ufds.dk>  Wed, 30 Mar 2016 17:00:48 +0200
+
 pci (0.5-1) wily; urgency=medium
 
   * Fixed build not working
