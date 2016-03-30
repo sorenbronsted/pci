@@ -24,7 +24,9 @@ class ProjectListCtrl extends DefaultListCtrl {
       });
     }
     else {
-      super.load();
+      Rest.instance.get('/rest/Project?orderby=name&order=asc').then((data) {
+        (view as DefaultListView).populate(data);
+      });
     }
   }
 }
