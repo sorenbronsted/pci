@@ -77,6 +77,7 @@ class Project extends ModelObject {
 			return $data;
 		}
 		$row = $cursor->next();
+		$row['jobstate_uid'] = intval($row['jobstate_uid']);
 		$data = array_merge($data, $row);
 
 		if (isset($row['stop'])) {
