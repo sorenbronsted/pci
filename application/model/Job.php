@@ -28,6 +28,7 @@ class Job extends ModelObject {
 		$result->log = '';
 		if (!is_null($dir)) {
 			chdir($dir);
+			putenv("HOME=$dir");
 		}
 		$ph = popen($this->cmd." 2>&1", 'r');
 		if ($ph === false) {
