@@ -1,6 +1,6 @@
 <?php
 
-abstract class ModelObject extends DbObject {
+abstract class ModelObject extends DbObject implements RestEnable, JsonEnable {
   
   public function jsonEncode() {
     $tmp = array();
