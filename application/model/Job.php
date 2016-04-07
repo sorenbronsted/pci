@@ -17,7 +17,7 @@ class Job extends ModelObject {
 		return self::$mandatories;
 	}
 
-	public function run($buildId, $user) {
+	public function run($buildId, $user, $dir) {
 		$result = new JobResult();
 		$result->job_uid = $this->uid;
 		$result->user = $user;
@@ -26,6 +26,9 @@ class Job extends ModelObject {
 
 		DiContainer::instance()->log->debug(__CLASS__,"Running: ".$this->cmd);
 		$result->log = '';
+		if (!is_null($dir)) {
+			chdir($dir);
+		}
 		$ph = popen($this->cmd." 2>&1", 'r');
 		if ($ph === false) {
 			$result->log = 'popen failed';

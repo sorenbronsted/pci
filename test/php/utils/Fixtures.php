@@ -6,6 +6,7 @@ class Fixtures {
 		$o = new Project();
 		$o->name = 'Sletmig';
 		$o->description = 'Sletmig';
+		$o->dir = '/tmp';
 		return $o;
 	}
 

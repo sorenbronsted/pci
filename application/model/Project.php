@@ -5,6 +5,7 @@ class Project extends ModelObject {
 		'uid' => Property::INT,
 		'name' => Property::STRING,
 		'description' => Property::STRING,
+		'dir' => Property::STRING,
 	);
 
 	private static $mandatories = array('name');
@@ -15,7 +16,7 @@ class Project extends ModelObject {
 		return JobResult::getObjects($sql, array('project_uid' => $this->uid));
 	}
 
-	private function drawBuildId() {
+	public function drawBuildId() {
 		return BuildIdGenerator::draw($this->uid);
 	}
 
@@ -24,7 +25,7 @@ class Project extends ModelObject {
 		$buildId = $project->drawBuildId();
 		$jobs = Job::getBy(array('project_uid' => $project->uid), array('sequence'));
 		foreach ($jobs as $job) {
-			$result = $job->run($buildId, $user);
+			$result = $job->run($buildId, $user, $project->dir);
 			if ($result->jobstate_uid == JobState::FAILED) {
 				throw new RuntimeException("Project $projectName build failed");
 			}
