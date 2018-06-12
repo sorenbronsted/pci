@@ -1,3 +1,10 @@
+pci (0.9) bionic; urgency=medium
+
+  * Ported to php 7
+  * Fixed dart build issues and other minor changes
+
+ -- Søren Brønsted <sbr@ufds.dk>  Tue, 12 Jun 2018 14:23:25 +0200
+
 pci (0.8-1) wily; urgency=medium
 
   * Added HOME var to jobs
