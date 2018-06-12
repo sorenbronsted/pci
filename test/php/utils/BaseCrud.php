@@ -1,16 +1,19 @@
 <?php
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * This class provides basic CRUD (Create,Read,Update,Delete) testing
  * on a class extending ModelObject
  * and it test mandatory properties on it as well.
  * You must override updateObject where you modify the properties of an object.
  */
-abstract class BaseCrud extends PHPUnit_Framework_TestCase {
+abstract class BaseCrud extends TestCase {
   private $class = null;
   protected $backupGlobals = FALSE;
   
   public function __construct($class) {
+  	parent::__construct();
     $this->class = $class;
   }
   

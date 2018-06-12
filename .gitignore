@@ -5,8 +5,9 @@ debian/*debhelper*
 debian/*substvars*
 doc/coverage
 vendor
-public/client/.packages
-public/client/packages
+public/**/.packages
+public/**/packages
+public/**/build
 public/client/main.dart.*
 *.sql.gz
 *.tgz

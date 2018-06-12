@@ -37,7 +37,7 @@
     </div>
 
 
-    <script type="application/dart" src="client/main.dart"></script>
-    <script src="client/packages/browser/dart.js"></script>
+    <script type="application/dart" src="web/main.dart"></script>
+    <script src="web/packages/browser/dart.js"></script>
   </body>
 </html>
