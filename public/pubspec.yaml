@@ -1,6 +1,14 @@
 name: pci
 description: pci
 dependencies:
-  browser: any
   webui:
     git: http://dev/git/ufds/webui.git
+
+dev_dependencies:
+  browser: ^0.10.0
+  dart_to_js_script_rewriter: ^1.0.1
+
+transformers:
+ - dart_to_js_script_rewriter
+ - $dart2js:
+    minify: false
