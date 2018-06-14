@@ -1,3 +1,9 @@
+pci (1.0) bionic; urgency=medium
+
+  * Migrated to newest lib and ui
+
+ -- Søren Brønsted <sbr@ufds.dk>  Thu, 14 Jun 2018 15:34:39 +0200
+
 pci (0.9) bionic; urgency=medium
 
   * Ported to php 7
