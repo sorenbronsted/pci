@@ -99,9 +99,10 @@ packages:
     version: "0.9.0+3"
   webui:
     description:
-      path: "/home/sb/projects/ufds/webui"
-      relative: false
-    source: path
-    version: "6.2.0"
+      ref: HEAD
+      resolved-ref: bd8ed6d1ef5972834aa75e97c36afecfa3046f06
+      url: "http://dev/git/ufds/webui.git"
+    source: git
+    version: "6.3.0"
 sdks:
   dart: ">=1.24.0 <2.0.0"

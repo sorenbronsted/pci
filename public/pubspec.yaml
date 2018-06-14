@@ -6,8 +6,8 @@ environment:
 
 dependencies:
   webui:
-    #git: http://dev/git/ufds/webui.git
-    path: /home/sb/projects/ufds/webui
+    git: http://dev/git/ufds/webui.git
+    #path: /home/sb/projects/ufds/webui
 
 dev_dependencies:
   browser: ^0.10.0
