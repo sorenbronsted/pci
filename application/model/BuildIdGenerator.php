@@ -1,4 +1,5 @@
 <?php
+namespace ufds;
 
 class BuildIdGenerator extends ModelObject {
 

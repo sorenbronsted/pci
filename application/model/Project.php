@@ -1,4 +1,8 @@
 <?php
+namespace ufds;
+
+use RuntimeException;
+use stdClass;
 
 class Project extends ModelObject {
 	private static $properties = array(
@@ -23,7 +27,7 @@ class Project extends ModelObject {
 	public static function build($projectName, $user) {
 		$project = Project::getOneBy(array('name' => $projectName));
 		$buildId = $project->drawBuildId();
-		$jobs = Job::getBy(array('project_uid' => $project->uid), array('sequence'));
+		$jobs = Job::getBy(['project_uid' => $project->uid], ['sequence']);
 		foreach ($jobs as $job) {
 			$result = $job->run($buildId, $user, $project->dir);
 			if ($result->jobstate_uid == JobState::FAILED) {
@@ -39,7 +43,7 @@ class Project extends ModelObject {
 
 	public function buildInBackground($user) {
 		$dir = dirname(dirname(dirname(__FILE__))).'/public';
-		$cmd = "nohup php $dir/build.php ".$this->name." $user > /dev/null 2>&1 &";
+		$cmd = "nohup php $dir/build.php '".$this->name."' $user > /dev/null 2>&1 &";
 		DiContainer::instance()->log->debug(__CLASS__,"$cmd");
 		shell_exec($cmd);
 	}
@@ -61,11 +65,11 @@ class Project extends ModelObject {
 
 	public static function isBuilding() {
 		$result = new stdClass();
-		$result->isBuilding = count(JobResult::getBy(array('jobstate_uid' => JobState::RUNNING))) >= 1;
+		$result->isBuilding = count(JobResult::getBy(['jobstate_uid' => JobState::RUNNING])) >= 1;
 		return $result;
 	}
 
-	protected function onJsonEncode($data) {
+	public function jsonEncode(array $data) {
 		$sql = "select min(jr.start) start, max(jr.stop) stop, max(jobstate_uid) jobstate_uid ".
 					"from project p ".
 					"join job j on p.uid = j.project_uid ".
@@ -85,10 +89,10 @@ class Project extends ModelObject {
 			$start = Timestamp::parse($row['start']);
 			$stop = Timestamp::parse($row['stop']);
 			$seconds = $stop->diff($start);
-			$h = floor($seconds/3600);
-			$m = floor(($seconds - ($h*3600))/60);
-			$s = $seconds - ($h*3600) - ($m*60);
-			$data['duration'] = "$h:$m:$s";
+			$h = str_pad(floor($seconds/3600),2, '0',STR_PAD_LEFT);
+			$m = str_pad(floor(($seconds - ($h*3600))/60), 2, '0', STR_PAD_LEFT);
+			$s = str_pad($seconds - ($h*3600) - ($m*60), 2, '0', STR_PAD_LEFT);
+			$data['duration'] = "1970-01-01 $h:$m:$s";
 		}
 		return $data;
 	}

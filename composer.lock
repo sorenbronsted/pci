@@ -4,22 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3ce38fa503e3a180329fc18ee3ab02a7",
-    "content-hash": "fcd7847c04475591ea6dc6185a2dd72d",
+    "content-hash": "356ed1cc6a62fc038bc035d5fcc8eba7",
     "packages": [
         {
             "name": "ruckusing/ruckusing-migrations",
-            "version": "1.1.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ruckus/ruckusing-migrations.git",
-                "reference": "853d95ecf2124b109fafbd83b1685b614f8137ab"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ruckus/ruckusing-migrations/zipball/853d95ecf2124b109fafbd83b1685b614f8137ab",
-                "reference": "853d95ecf2124b109fafbd83b1685b614f8137ab",
-                "shasum": ""
+                "url": "http://dev.ufds.org/git/ufds/ruckusing-migrations.git",
+                "reference": "21237303212f779b7f476d586448c6ce8560889f"
             },
             "require": {
                 "php": ">=5.2.0"
@@ -37,15 +30,14 @@
                     "Task": "lib/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
             "authors": [
                 {
-                    "name": "Cody Caughlan",
                     "email": "codycaughlan@gmail.com",
                     "homepage": "https://github.com/ruckus/ruckusing-migrations/wiki",
+                    "name": "Cody Caughlan",
                     "role": "Project lead / Developer"
                 }
             ],
@@ -60,167 +52,162 @@
                 "ruckusing",
                 "task"
             ],
-            "time": "2015-03-18 15:29:47"
+            "support": {
+                "email": "codycaughlan@gmail.com",
+                "issues": "https://github.com/ruckus/ruckusing-migrations/issues",
+                "source": "https://github.com/ruckus/ruckusing-migrations"
+            },
+            "time": "2016-05-19T14:00:01+00:00"
         },
         {
             "name": "ufds/libcommon",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "http://dev/git/ufds/libcommon.git",
-                "reference": "dafdfe8f7ed7891a6c56369ab2aef4071cee0d5f"
+                "url": "http://dev.ufds.org/git/ufds/libcommon.git",
+                "reference": "068e9ff449fe6a2ee8283b54aa4cd7a00b23e180"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "common/"
-                ]
+                "psr-4": {
+                    "ufds\\": [
+                        "common/"
+                    ]
+                }
             },
             "license": [
                 "UFDS privat"
             ],
             "description": "UFDS common library",
-            "time": "2015-12-11 13:57:53"
+            "time": "2017-01-10T13:09:31+00:00"
         },
         {
             "name": "ufds/libdatabase",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "http://dev/git/ufds/libdatabase.git",
-                "reference": "18b75a4ba0bb9b6e8d411e49816fe2523e1467be"
+                "url": "http://dev.ufds.org/git/ufds/libdatabase.git",
+                "reference": "97be98de2f46ec147ff35360ac5c492f6007ce73"
             },
             "require": {
-                "ruckusing/ruckusing-migrations": "1.1.0",
+                "ruckusing/ruckusing-migrations": "dev-master",
                 "ufds/libcommon": "dev-master",
                 "ufds/libtypes": "dev-master",
                 "ufds/libutil": "dev-master"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "dbobject/"
-                ]
+                "psr-4": {
+                    "ufds\\": "dbobject/"
+                }
             },
             "license": [
                 "UFDS privat"
             ],
             "description": "Generel ORM mapper baseret på PDO",
-            "time": "2016-03-23 14:47:50"
+            "time": "2017-09-14T08:54:52+00:00"
         },
         {
             "name": "ufds/librest",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "http://dev/git/ufds/librest.git",
-                "reference": "b4db83268533d347a3982bd49b1d941f04ae7123"
+                "url": "http://dev.ufds.org/git/ufds/librest.git",
+                "reference": "c8c153bdbeb005d0d86a0b2b3036c814424031f8"
             },
             "require": {
                 "ufds/libcommon": "dev-master",
-                "ufds/libssoclient": "dev-master",
                 "ufds/libutil": "dev-master"
             },
             "require-dev": {
+                "ruckusing/ruckusing-migrations": "dev-master",
                 "ufds/libdatabase": "dev-master",
                 "ufds/libtypes": "dev-master"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "rest/"
-                ]
+                "psr-4": {
+                    "ufds\\": [
+                        "rest/"
+                    ]
+                }
             },
             "license": [
                 "UFDS privat"
             ],
             "description": "UFDS standard rest api",
-            "time": "2016-04-07 07:21:32"
-        },
-        {
-            "name": "ufds/libssoclient",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "http://dev/git/ufds/libssoclient.git",
-                "reference": "fa60df0431349f31aaaeb6ae7a038ce81eccc70f"
-            },
-            "require": {
-                "ufds/libcommon": "dev-master",
-                "ufds/libutil": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "ssoclient/"
-                ]
-            },
-            "license": [
-                "UFDS privat"
-            ],
-            "description": "CLient interface to Single Sign On (SSO)",
-            "time": "2016-03-18 13:03:29"
+            "time": "2017-01-25T15:03:46+00:00"
         },
         {
             "name": "ufds/libtypes",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "http://dev/git/ufds/libtypes.git",
-                "reference": "bf39e69ac73625708744eb1c03cec670c29d27b0"
+                "url": "http://dev.ufds.org/git/ufds/libtypes.git",
+                "reference": "b0729e0a6224c649195597269ace563a2b216161"
             },
             "require": {
                 "ufds/libcommon": "dev-master"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "types/"
-                ]
+                "psr-4": {
+                    "ufds\\": [
+                        "types/"
+                    ]
+                }
             },
             "license": [
                 "UFDS privat"
             ],
             "description": "UFDS standard types",
-            "time": "2016-03-23 13:19:38"
+            "time": "2017-12-15T12:08:00+00:00"
         },
         {
             "name": "ufds/libutil",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "http://dev/git/ufds/libutil.git",
-                "reference": "2acfdc712724bce695ddbc50f28ed8b8d90d42a1"
+                "url": "http://dev.ufds.org/git/ufds/libutil.git",
+                "reference": "ec3f0e338bc9fb6284708e9e494af997f3f6b501"
+            },
+            "require": {
+                "ufds/libcommon": "dev-master"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "config/",
-                    "di/",
-                    "log/",
-                    "lpr/"
-                ]
+                "psr-4": {
+                    "ufds\\": [
+                        "config/",
+                        "di/",
+                        "log/",
+                        "lpr/"
+                    ]
+                }
             },
             "license": [
                 "UFDS privat"
             ],
             "description": "Package of utils",
-            "time": "2016-03-23 15:07:57"
+            "time": "2017-04-05T08:59:27+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "ruckusing/ruckusing-migrations": 20,
         "ufds/libdatabase": 20,
         "ufds/libtypes": 20,
         "ufds/libcommon": 20,
         "ufds/librest": 20,
-        "ufds/libssoclient": 20,
         "ufds/libutil": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "platform-overrides": {
+        "php": "5.5.9"
+    }
 }

@@ -1,22 +1,13 @@
 <?php
+namespace ufds;
 
 abstract class ModelObject extends DbObject implements RestEnable, JsonEnable {
-  
-  public function jsonEncode() {
-    $tmp = array();
-    $tmp['class'] = get_class($this);
-    foreach($this->getData() as $key => $value) {
-      $tmp[$key] = (is_object($value) ? strval($value) : $value);
-    }
-    $tmp = $this->onJsonEncode($tmp);
-    return json_encode($tmp);
-  }
-  
-  protected function onJsonEncode($data) {
-    return $data;
-  }
-  
-  protected function getMandatoryErrors() {
+
+	public function jsonEncode(array $data) {
+		return $data;
+	}
+
+	protected function getMandatoryErrors() {
     $mandatories = $this->getMandatories();
     $errors = array();
     $properties = $this->getProperties();

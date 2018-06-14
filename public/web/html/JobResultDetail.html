@@ -1,39 +1,39 @@
 <div id="JobResultDetail">
   <div id="functions" class="page-header">
     <h3>JobResult</h3>
-    <button id="back" class="btn btn-primary">Tilbage</button>
+    <button name="cancel" data-class="JobResult" class="btn btn-primary">Tilbage</button>
   </div>
   <div id="detail">
-    <form id="formdata" class="form-horizontal form-group-sm">
+    <form data-class="JobResult" class="form-horizontal form-group-sm">
 
       <div class="form-group">
         <label for="build_id" class="col-sm-2 control-label">Build id</label>
         <div class="col-sm-2">
-          <input type="text" class="form-control" id="build_id" disabled>
+          <input data-property="build_id" type="text" class="form-control" id="build_id" disabled>
         </div>
 
         <label for="start" class="col-sm-1 control-label">Start</label>
         <div class="col-sm-3">
-          <input type="text" class="datetime form-control" id="start" disabled>
+          <input data-property="start" type="text" class="datetime form-control" id="start" disabled>
         </div>
       </div>
 
       <div class="form-group">
         <label for="jobname" class="col-sm-2 control-label">Job</label>
         <div class="col-sm-2">
-          <input type="text" class="form-control" id="jobname" disabled>
+          <input data-property="jobname" type="text" class="form-control" id="jobname" disabled>
         </div>
 
         <label for="stop" class="col-sm-1 control-label">Stop</label>
         <div class="col-sm-3">
-          <input type="text" class="datetime form-control" id="stop" disabled>
+          <input data-property="stop" type="text" class="datetime form-control" id="stop" disabled>
         </div>
       </div>
 
       <div class="form-group">
         <label for="log" class="col-sm-2 control-label">Log</label>
         <div class="col-sm-10">
-          <textarea  id="log" rows="25" class="form-control" disabled></textarea>
+          <textarea  data-property="log" id="log" rows="25" class="form-control" disabled></textarea>
         </div>
       </div>
 

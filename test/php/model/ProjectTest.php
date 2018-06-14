@@ -1,11 +1,12 @@
 <?php
+namespace ufds;
 
 require_once 'test/settings.php';
 
 class ProjectTest extends BaseCrud {
 
 	public function __construct() {
-		parent::__construct('Project');
+		parent::__construct(Project::class);
 	}
 
 	protected function updateObject($object) {

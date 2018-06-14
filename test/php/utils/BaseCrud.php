@@ -1,4 +1,5 @@
 <?php
+namespace ufds;
 
 use PHPUnit\Framework\TestCase;
 

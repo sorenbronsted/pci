@@ -1,4 +1,5 @@
 <?php
+namespace ufds;
 
 class Job extends ModelObject {
 	private static $properties = array(

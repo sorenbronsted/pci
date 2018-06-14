@@ -1,4 +1,6 @@
 <?php
+namespace ufds;
+
 require_once 'settings.php';
 
 $dic = DiContainer::instance();
@@ -7,7 +9,7 @@ try {
 		echo Rest::run($_SERVER, $_REQUEST);
 	}
 	else {
-		readfile('view/main.html');
+		readfile('web/html/main.html');
 	}
 }
 catch(Exception $e) {

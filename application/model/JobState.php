@@ -1,4 +1,5 @@
 <?php
+namespace ufds;
 
 class JobState extends DbObject {
 	const RUNNING = 1;

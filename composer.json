@@ -2,32 +2,29 @@
   "name": "ufds/pci",
   "description": "Php Continuous Integration",
   "license": "GPL",
+
+  "config": {
+    "platform": {
+      "php": "5.5.9"
+    },
+    "secure-http": false
+  },
+
+  "autoload": {
+    "psr-4": { "ufds\\": ["application/model", "application/control"] }
+  },
+
   "require": {
-    "ruckusing/ruckusing-migrations" : "1.1.0",
+    "ruckusing/ruckusing-migrations" : "dev-master",
     "ufds/libdatabase": "dev-master",
     "ufds/libtypes": "dev-master",
     "ufds/libcommon": "dev-master",
     "ufds/librest": "dev-master",
-    "ufds/libssoclient": "dev-master",
     "ufds/libutil": "dev-master"
   },
   
-  "config" : {
-    "secure-http": false
-  },
-
   "repositories": [
-    {"type": "vcs", "url": "http://dev/git/ufds/libdatabase.git"},
-    {"type": "vcs", "url": "http://dev/git/ufds/libutil.git"},
-    {"type": "vcs", "url": "http://dev/git/ufds/libtypes.git"},
-    {"type": "vcs", "url": "http://dev/git/ufds/librest.git"},
-    {"type": "vcs", "url": "http://dev/git/ufds/libssoclient.git"},
-    {"type": "vcs", "url": "http://dev/git/ufds/libcommon.git"}
-  ],
-
-  "autoload": {
-    "classmap": ["application/"]
-  }
-
+    {"type": "composer","url": "http://dev.ufds.org/satis"}
+  ]
 }
 

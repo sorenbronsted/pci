@@ -1,4 +1,5 @@
 <?php
+namespace ufds;
 
 class JobResult extends ModelObject {
 	private static $properties = array(
@@ -41,7 +42,7 @@ class JobResult extends ModelObject {
 		return self::getObjects($sql,array('project_uid' => $projectUid));
 	}
 
-	protected function onJsonEncode($data) {
+	public function jsonEncode(array $data) {
 		$job = Job::getByUid($this->job_uid);
 		$data['jobname'] = $job->name;
 		return $data;
