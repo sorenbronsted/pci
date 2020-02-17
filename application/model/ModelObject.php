@@ -1,19 +1,19 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 abstract class ModelObject extends DbObject implements RestEnable, JsonEnable {
 
-	public function jsonEncode(array $data) {
+	public function jsonEncode(array $data) : array {
 		return $data;
 	}
 
-	protected function getMandatoryErrors() {
+	protected function getMandatoryErrors() : ValidationException {
     $mandatories = $this->getMandatories();
-    $errors = array();
+    $errors = new ValidationException($this->getClass());
     $properties = $this->getProperties();
     foreach ($mandatories as $mandatory) {
       if (Property::isEmpty($properties[$mandatory], $this->$mandatory)) {
-        $errors[$mandatory] = "Felt skal udfyldelse";
+        $errors->addError($mandatory, "Felt skal udfyldelse");
       }
     }
     return $errors;
@@ -21,14 +21,16 @@ abstract class ModelObject extends DbObject implements RestEnable, JsonEnable {
 
   protected function validateMandatories() {
     $errors = self::getMandatoryErrors();
-    if (count($errors) > 0) {
-      throw new ValidationException($errors);
+    if ($errors->hasValidations()) {
+      throw $errors;
     }
   }
  
-  public function getMandatories() {}
+  public function getMandatories() : array {
+		return [];
+	}
 
-  public function save() {
+  public function save() : void {
     $this->validateMandatories();
     parent::save();
   }

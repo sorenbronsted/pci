@@ -1,5 +1,5 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 class JobState extends DbObject {
 	const RUNNING = 1;
@@ -11,7 +11,7 @@ class JobState extends DbObject {
 		'name' => Property::STRING,
 	);
 
-	protected function getProperties() {
+	protected function getProperties() : array {
 		return self::$properties;
 	}
 }

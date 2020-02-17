@@ -1,25 +1,25 @@
 <div id="JobResultList" class="page-header">
-  <div id="functions">
-    <h3>JobResults</h3>
-    <form class="form-inline">
-      <button name="build" data-class="Project" class="btn btn-primary">New build</button>
-      <button name="home" data-class="JobResult" class="btn">Hjem</button>
-    </form>
-  </div>
-  <div id="list">
-      <table data-class="JobResult" class="table table-condensed">
-        <thead>
-          <tr>
-            <th data-link="delete" data-property="uid" class="delete"></th>
-            <th data-link="edit" data-property="build_id" data-type="number" data-format="#" class="edit col-sm-1">Build Id</th>
-            <th data-property="jobname" class="col-sm-1">Job</th>
-            <th data-property="user" class="col-sm-1">User</th>
-            <th data-property="start" data-type="datetime" data-format="dd-MM-yyyy HH:mm:ss" class="col-sm-2">Start</th>
-            <th data-property="stop" data-type="datetime" data-format="dd-MM-yyyy HH:mm:ss" class="col-sm-7">Stop</th>
-           </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-  </div>
+	<form data-class="Job">
+		<section class="w3-bar w3-card-2 w3-margin-top">
+			<button name="build" class="w3-bar-item w3-button w3-blue">New</button>
+			<button name="home" class="w3-bar-item w3-button w3-blue">Hjem</button>
+		</section>
+	</form>
+
+	<section class="w3-card-2 w3-margin-top">
+		<table data-class="JobResult" class="w3-table w3-striped">
+			<thead class="w3-light-gray">
+			<tr>
+				<th data-link="delete" data-property="uid" class="th-icon"></th>
+				<th data-link="edit" data-property="build_id" data-type="number" data-format="#" class="th1">Build Id</th>
+				<th data-property="jobname" class="th1">Job</th>
+				<th data-property="user" class="th1">User</th>
+				<th data-property="start" data-type="datetime" data-format="DD-MM-YYYY HH:MM:SS" class="th-timestamp">Start</th>
+				<th data-property="stop" data-type="datetime" data-format="DD-MM-YYYY HH:MM:SS" class="">Stop</th>
+			</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</section>
 </div>

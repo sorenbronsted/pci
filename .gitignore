@@ -13,3 +13,4 @@ public/client/main.dart.*
 *.sql.gz
 *.tgz
 *~
+/node_modules/

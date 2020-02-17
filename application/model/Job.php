@@ -1,5 +1,5 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 class Job extends ModelObject {
 	private static $properties = array(
@@ -14,7 +14,7 @@ class Job extends ModelObject {
 		'name', 'project_uid', 'sequence'
 	);
 
-	public function getMandatories() {
+	public function getMandatories() : array {
 		return self::$mandatories;
 	}
 
@@ -51,14 +51,14 @@ class Job extends ModelObject {
 		return $result;
 	}
 
-	public function destroy() {
+	public function destroy() : void {
 		$results = JobResult::getBy(array('job_uid' => $this->uid));
 		foreach($results as $result) {
 			$result->destroy();
 		}
 		parent::destroy();
 	}
-	protected function getProperties() {
+	protected function getProperties() : array {
 		return self::$properties;
 	}
 }

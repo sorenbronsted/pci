@@ -1,5 +1,5 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 use PHPUnit\Framework\TestCase;
 
@@ -11,8 +11,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class BaseCrud extends TestCase {
   private $class = null;
-  protected $backupGlobals = FALSE;
-  
+
   public function __construct($class) {
   	parent::__construct();
     $this->class = $class;
@@ -37,7 +36,7 @@ abstract class BaseCrud extends TestCase {
 				$this->fail("Expected ValidationException, $mandatory");
       }
       catch (ValidationException $e) {
-        $this->assertNotNull($e->$mandatory);
+        $this->assertTrue($e->hasValidations());
         //Ignore
       }
       $object->$mandatory = $oldValue;
@@ -45,18 +44,18 @@ abstract class BaseCrud extends TestCase {
     $this->delete($object->uid);
   }
 
-  abstract protected function updateObject($object);
+  abstract protected function updateObject(DbObject $object);
   
-  abstract protected function createObject();
+  abstract protected function createObject() : DbObject;
 
-  protected function create() {
+  protected function create() : int {
     $object = $this->createObject();
     $object->save();
     $this->assertGreaterThan(0, $object->uid);
     return $object->uid;
   }
   
-  protected function read($uid) {
+  protected function read(int $uid) : DbObject {
     $class = $this->class;
     $origin = $this->createObject();
     $origin->uid = $uid;
@@ -65,7 +64,7 @@ abstract class BaseCrud extends TestCase {
     return $object;
   }
   
-  protected function update($object) {
+  protected function update(dbObject $object) {
     $this->updateObject($object);
     $object->save();
     $class = $this->class;
@@ -73,7 +72,7 @@ abstract class BaseCrud extends TestCase {
     $this->compareObject($object, $updated);
   }
   
-  protected function delete($uid) {
+  protected function delete(int $uid) {
     $class = $this->class;
     $object = $class::getByUid($uid);
     $object->destroy();
@@ -86,7 +85,7 @@ abstract class BaseCrud extends TestCase {
     }
   }
   
-  protected function compareObject($origin, $object) {
+  protected function compareObject(DbObject $origin, DbObject $object) {
     $this->assertNotNull($origin);
     $this->assertNotNull($object);
     foreach($origin->getData() as $name => $value) {

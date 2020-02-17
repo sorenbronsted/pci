@@ -1,5 +1,5 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 use RuntimeException;
 use stdClass;
@@ -48,7 +48,7 @@ class Project extends ModelObject {
 		shell_exec($cmd);
 	}
 
-	public function destroy() {
+	public function destroy() : void {
 		$jobs = Job::getBy(array('project_uid' => $this->uid));
 		foreach($jobs as $job) {
 			$job->destroy();
@@ -69,7 +69,7 @@ class Project extends ModelObject {
 		return $result;
 	}
 
-	public function jsonEncode(array $data) {
+	public function jsonEncode(array $data) : array {
 		$sql = "select min(jr.start) start, max(jr.stop) stop, max(jobstate_uid) jobstate_uid ".
 					"from project p ".
 					"join job j on p.uid = j.project_uid ".
@@ -98,11 +98,11 @@ class Project extends ModelObject {
 	}
 
 
-	public function getMandatories() {
+	public function getMandatories() : array {
 		return self::$mandatories;
 	}
 
-	protected function getProperties() {
+	protected function getProperties() : array {
 		return self::$properties;
 	}
 }

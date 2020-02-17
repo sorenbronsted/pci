@@ -1,5 +1,5 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 $loader = require dirname(__DIR__).'/vendor/autoload.php'; // Use composer autoloading
 

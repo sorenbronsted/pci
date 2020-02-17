@@ -1,35 +1,22 @@
-<div id="JobDetail" class="page-header">
-  <div id="functions">
-    <h3>Job</h3>
-    <form>
-      <button data-class="Job" name="save" class="btn btn-primary">Gem</button>
-      <button data-class="Job" name="cancel" class="btn">Fortryd</button>
-    </form>
-  </div>
-  <div id="detail">
-    <form data-class="Job" class="form-horizontal form-group-sm col-sm-9">
+<section id="JobDetail">
+	<form data-class="Job">
+    <section class="w3-bar w3-card-2 w3-margin-top">
+      <button name="save" type="submit" class="w3-bar-item w3-button w3-blue">Gem</button>
+      <button name="cancel" class="w3-bar-item w3-button w3-blue">Fortryd</button>
+    </section>
 
-      <div class="form-group">
-        <label for="name" class="col-sm-2 control-label">Name</label>
-        <div class="col-sm-10">
-          <input data-property="name" type="text" class="form-control" required id="name">
-        </div>
+		<section class="w3-container w3-cell w3-card-2 w3-margin-top w3-margin-right w3-left default-width">
+      <h4>Job</h4>
+      <div class="w3-padding-16">
+        <label for="name" class="w3-label w3-text-gray">Name</label>
+        <input data-property="name" type="text" class="w3-input" required id="name">
+
+        <label for="cmd" class="w3-label w3-text-gray">Cmd</label>
+        <input data-property="cmd" type="text" class="w3-input" required id="cmd">
+
+        <label for="sequence" class="w3-label w3-text-gray">Sequence</label>
+        <input data-property="sequence" type="text" class="w3-input" required id="sequence">
       </div>
-
-      <div class="form-group">
-        <label for="cmd" class="col-sm-2 control-label">Cmd</label>
-        <div class="col-sm-10">
-          <input data-property="cmd" type="text" class="form-control" required id="cmd">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="sequence" class="col-sm-2 control-label">Sequence</label>
-        <div class="col-sm-10">
-          <input data-property="sequence" type="text" class="form-control" required id="sequence">
-        </div>
-      </div>
-
-    </form>
-  </div>
-</div>
+		</section>
+	</form>
+</section>

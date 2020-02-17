@@ -1,9 +1,9 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 class Fixtures {
 
-	public static function getProject() {
+	public static function getProject() : Project {
 		$o = new Project();
 		$o->name = 'Sletmig';
 		$o->description = 'Sletmig';
@@ -11,7 +11,7 @@ class Fixtures {
 		return $o;
 	}
 
-	public static function getJob(Project $project = null) {
+	public static function getJob(Project $project = null) : Job {
 		$o = new Job();
 		$o->name = 'Sletmig';
 		$o->cmd = 'Sletmig';
@@ -20,7 +20,7 @@ class Fixtures {
 		return $o;
 	}
 
-	public static function getJobResult() {
+	public static function getJobResult() : JobResult {
 		$o = new JobResult();
 		$o->start = Timestamp::parse('2015-10-19 13:37:25');
 		$o->stop = Timestamp::parse('2015-10-19 13:45:11');

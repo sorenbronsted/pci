@@ -1,49 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<title>pci</title>
-	<link rel="stylesheet" href="web/css/bootstrap.min.css" >
-	<link rel="stylesheet" href="web/css/application.css" >
-	<link id="ProjectListImport" rel="import" href="web/html/ProjectList.html" >
-	<link id="ProjectDetailImport" rel="import" href="web/html/ProjectDetail.html" >
-	<link id="JobListImport" rel="import" href="web/html/JobList.html" >
-	<link id="JobDetailImport" rel="import" href="web/html/JobDetail.html" >
-	<link id="JobResultListImport" rel="import" href="web/html/JobResultList.html" >
-	<link id="JobResultDetailImport" rel="import" href="web/html/JobResultDetail.html" >
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>PCI - php continues integration</title>
+	<link href="https://www.w3schools.com/w3css/4/w3.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="/web/css/datepicker.css" rel="stylesheet">
+	<link href="/web/css/w3app.css" rel="stylesheet">
 </head>
-
-<body class="col-md-12">
-<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="#">PCI</a>
+<body>
+<nav>
+	<nav class="w3-row w3-bar w3-blue">
+		<div class="w3-half">
+			<a class="w3-bar-item w3-button topbar" href="/list/Project">PCI</a>
 		</div>
-		<div id="navbar" class="navbar-collapse collapse">
-			<!--ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Dashboard</a></li>
-				<li><a href="#">Settings</a></li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Help</a></li>
-			</ul -->
-		</div>
-	</div>
+	</nav>
 </nav>
 
-<div id="content">
-</div>
+<main id="content" class="w3-container"></main>
 
-
-<script type="application/dart" src="web/main.dart"></script>
-<script src="web/packages/browser/dart.js"></script>
+<footer>
+	<!-- <script src="web/js/sw.js"></script> -->
+	<script src="/web/js/main.bundle.js"></script>
+</footer>
 </body>
 </html>

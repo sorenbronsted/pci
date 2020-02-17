@@ -1,5 +1,5 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 class BuildIdGenerator extends ModelObject {
 
@@ -27,11 +27,11 @@ class BuildIdGenerator extends ModelObject {
 		return $big->build_id;
 	}
 
-	public function getMandatories() {
+	public function getMandatories() : array {
 		return self::$mandatories;
 	}
 
-	protected function getProperties() {
+	protected function getProperties() : array {
 		return self::$properties;
 	}
 }

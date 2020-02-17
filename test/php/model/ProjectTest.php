@@ -1,5 +1,5 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 require_once 'test/settings.php';
 
@@ -14,11 +14,11 @@ class ProjectTest extends BaseCrud {
 		$object->description = 'test';
 	}
 
-	protected function createObject() {
+	protected function createObject() : DbObject {
 		return Fixtures::getProject();
 	}
 
-	protected function setUp() {
+	protected function setUp() : void {
 		$tables = array('project', 'job', 'jobresult', 'buildidgenerator');
 		foreach($tables as $table) {
 			Db::exec(DbObject::$db, "delete from $table");

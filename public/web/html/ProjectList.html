@@ -1,25 +1,25 @@
-<div id="ProjectList" class="page-header">
-  <div id="functions">
-    <h3>Projects</h3>
-    <form class="form-inline">
-      <button name="create" data-class="Project" class="btn btn-primary">New project</button>
-    </form>
-  </div>
-  <div id="list">
-      <table data-class="Project" class="table table-condensed">
-        <thead>
-          <tr>
-            <th data-link="delete" data-property="uid" class="delete"></th>
-            <th data-link="edit" data-property="name" class="edit col-sm-2">Name</th>
-            <th data-link="children" data-link-class="JobResult" data-link-display="builds" data-property="project_uid" class="col-sm-1">Builds</th>
-            <th data-link="children" data-link-class="Job" data-link-display="jobs" data-property="project_uid" class="col-sm-1" >Jobs</th>
-            <th data-property="start" data-type="datetime" data-format="dd-MM-yyyy HH:mm:ss" class="col-sm-2" >Start</th>
-            <th data-property="stop"  data-type="datetime" data-format="dd-MM-yyyy HH:mm:ss" class="col-sm-2" >Stop</th>
-            <th data-property="duration" data-type="datetime" data-format="HH:mm:ss" class="col-sm-8" >Duration</th>
-           </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-  </div>
-</div>
+<section id="ProjectList">
+  <form data-class="Project">
+    <section class="w3-bar w3-card-2 w3-margin-top">
+      <button name="create" class="w3-bar-item w3-button w3-blue">New</button>
+    </section>
+  </form>
+
+  <section class="w3-card-2 w3-margin-top">
+    <table data-class="Project" class="w3-table w3-striped">
+      <thead class="w3-light-gray">
+        <tr>
+          <th data-link="delete" data-property="uid" class="th-icon"></th>
+          <th data-link="edit" data-property="name">Name</th>
+          <th data-link="children" data-link-class="JobResult" data-link-display="builds" data-property="project_uid">Builds</th>
+          <th data-link="children" data-link-class="Job" data-link-display="jobs" data-property="project_uid">Jobs</th>
+          <th data-property="start" data-type="datetime" data-format="DD-MM-YYYY HH:MM:SS" class="th-timestamp" >Start</th>
+          <th data-property="stop"  data-type="datetime" data-format="DD-MM-YYYY HH:MM:SS" class="th-timestamp" >Stop</th>
+          <th data-property="duration" data-type="datetime" data-format="HH:MM:SS" class="th-time" >Duration</th>
+         </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </section>
+</section>

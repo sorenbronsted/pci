@@ -1,21 +1,21 @@
-<div id="JobList" class="page-header">
-  <div id="functions">
-    <h3>Jobs</h3>
-    <form class="form-inline">
-      <button name="create" data-class="Job" class="btn btn-primary">New job</button>
-      <button name="home" data-class="Job" class="btn">Hjem</button>
-    </form>
-  </div>
-  <div id="list">
-      <table data-class="Job" class="table table-condensed">
-        <thead>
-          <tr>
-            <th data-link="delete" data-property="uid" class="delete">&nbsp;</th>
-            <th data-link="edit" data-property="name" class="edit col-sm-12">Name</th>
-           </tr>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-  </div>
-</div>
+<section id="JobList">
+	<form data-class="Job">
+		<section class="w3-bar w3-card-2 w3-margin-top">
+			<button name="create" class="w3-bar-item w3-button w3-blue">New</button>
+			<button name="home" class="w3-bar-item w3-button w3-blue">Hjem</button>
+		</section>
+	</form>
+
+	<section class="w3-card-2 w3-margin-top">
+		<table data-class="Job" class="w3-table w3-striped">
+			<thead class="w3-light-gray">
+			<tr>
+				<th data-link="delete" data-property="uid" class="th-icon">&nbsp;</th>
+				<th data-link="edit" data-property="name">Name</th>
+			</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</section>
+</section>

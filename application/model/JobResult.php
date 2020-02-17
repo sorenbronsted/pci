@@ -1,5 +1,5 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 class JobResult extends ModelObject {
 	private static $properties = array(
@@ -42,18 +42,18 @@ class JobResult extends ModelObject {
 		return self::getObjects($sql,array('project_uid' => $projectUid));
 	}
 
-	public function jsonEncode(array $data) {
+	public function jsonEncode(array $data) : array {
 		$job = Job::getByUid($this->job_uid);
 		$data['jobname'] = $job->name;
 		return $data;
 	}
 
 
-	public function getMandatories() {
+	public function getMandatories() : array {
 		return self::$mandatories;
 	}
 
-	protected function getProperties() {
+	protected function getProperties() : array {
 		return self::$properties;
 	}
 }

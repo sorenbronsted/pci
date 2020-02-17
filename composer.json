@@ -1,30 +1,19 @@
 {
-  "name": "ufds/pci",
+  "name": "sbronsted/pci",
   "description": "Php Continuous Integration",
   "license": "GPL",
 
   "config": {
-    "platform": {
-      "php": "5.5.9"
-    },
-    "secure-http": false
   },
 
   "autoload": {
-    "psr-4": { "ufds\\": ["application/model", "application/control"] }
+    "psr-4": { "sbronsted\\": ["application/model", "application/control"] }
   },
 
   "require": {
-    "ruckusing/ruckusing-migrations" : "dev-master",
-    "ufds/libdatabase": "dev-master",
-    "ufds/libtypes": "dev-master",
-    "ufds/libcommon": "dev-master",
-    "ufds/librest": "dev-master",
-    "ufds/libutil": "dev-master"
-  },
-  
-  "repositories": [
-    {"type": "composer","url": "http://dev.ufds.org/satis"}
-  ]
+    "ruckusing/ruckusing-migrations": "^1.1",
+    "sbronsted/libdatabase": "^2.1",
+    "sbronsted/librest": "^4.1",
+    "phpunit/phpunit": "^9.0"
+  }
 }
-

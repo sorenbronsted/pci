@@ -1,5 +1,5 @@
 <?php
-namespace ufds;
+namespace sbronsted;
 
 require_once 'test/settings.php';
 
@@ -14,7 +14,7 @@ class JobTest extends BaseCrud {
 		$object->cmd = 'echo Hello World';
 	}
 
-	protected function createObject() {
+	protected function createObject() : DbObject {
 		return Fixtures::getJob();
 	}
 }

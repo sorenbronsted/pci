@@ -1,42 +1,28 @@
-<div id="JobResultDetail">
-  <div id="functions" class="page-header">
-    <h3>JobResult</h3>
-    <button name="cancel" data-class="JobResult" class="btn btn-primary">Tilbage</button>
-  </div>
-  <div id="detail">
-    <form data-class="JobResult" class="form-horizontal form-group-sm">
+<section id="JobResultDetail">
+	<form data-class="JobResult" class="form-horizontal form-group-sm">
 
-      <div class="form-group">
-        <label for="build_id" class="col-sm-2 control-label">Build id</label>
-        <div class="col-sm-2">
-          <input data-property="build_id" type="text" class="form-control" id="build_id" disabled>
-        </div>
+		<section class="w3-bar w3-card-2 w3-margin-top">
+			<button name="cancel" data-class="JobResult" class="w3-bar-item w3-button w3-blue">Tilbage</button>
+		</section>
 
-        <label for="start" class="col-sm-1 control-label">Start</label>
-        <div class="col-sm-3">
-          <input data-property="start" type="text" class="datetime form-control" id="start" disabled>
-        </div>
-      </div>
+		<section class="w3-container w3-cell w3-card-2 w3-margin-top w3-margin-right w3-left full">
+			<h4>JobResult</h4>
+			<div class="w3-padding-16">
+				<label for="build_id" class="w3-label w3-text-gray">Build id</label>
+				<input data-property="build_id" class="w3-input" id="build_id" disabled>
 
-      <div class="form-group">
-        <label for="jobname" class="col-sm-2 control-label">Job</label>
-        <div class="col-sm-2">
-          <input data-property="jobname" type="text" class="form-control" id="jobname" disabled>
-        </div>
+				<label for="jobname" class="w3-label w3-text-gray">Job</label>
+				<input data-property="jobname" class="w3-input" id="jobname" disabled>
 
-        <label for="stop" class="col-sm-1 control-label">Stop</label>
-        <div class="col-sm-3">
-          <input data-property="stop" type="text" class="datetime form-control" id="stop" disabled>
-        </div>
-      </div>
+				<label for="start" class="w3-label w3-text-gray">Start</label>
+				<input data-property="start" data-type="datetime" data-format="DD-MM-YYYY HH:MM:SS" class="w3-input" id="start" disabled>
 
-      <div class="form-group">
-        <label for="log" class="col-sm-2 control-label">Log</label>
-        <div class="col-sm-10">
-          <textarea  data-property="log" id="log" rows="25" class="form-control" disabled></textarea>
-        </div>
-      </div>
+				<label for="stop" class="w3-label w3-text-gray">Stop</label>
+				<input data-property="stop"  data-type="datetime" data-format="DD-MM-YYYY HH:MM:SS"  class="w3-input" id="stop" disabled>
 
-    </form>
-  </div>
-</div>
+				<label for="log" class="w3-label w3-text-gray">Log</label>
+				<textarea data-property="log" id="log" rows="25" class="w3-input" disabled></textarea>
+			</div>
+		</section>
+	</form>
+</section>

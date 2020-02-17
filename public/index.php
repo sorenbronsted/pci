@@ -1,5 +1,7 @@
 <?php
-namespace ufds;
+namespace sbronsted;
+
+use Exception;
 
 require_once 'settings.php';
 
