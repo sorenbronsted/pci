@@ -20,33 +20,15 @@ class PciApp extends mvc.App {
 		let repo = new mvc.Repo();
 		repo.add(router);
 		repo.add(new mvc.CurrentViewState());
-		repo.add(new app.Project(store));
-		repo.add(new app.Job(store));
-		repo.add(new app.JobResult(store));
+		repo.add(new app.Build(store));
 
 		// Load views and add controllers
-		await rest.get('/web/html/ProjectList.html').then(html => {
-			repo.add(new app.ProjectListCtrl(repo, new app.ProjectListView(this._window, html, css)));
+		await rest.get('/web/html/BuildList.html').then(html => {
+			repo.add(new app.BuildListCtrl(repo, new app.BuildListView(this._window, html, css)));
 		});
 
-		await rest.get(`/web/html/ProjectDetail.html`).then(html => {
-			repo.add(new app.ProjectDetailCtrl(repo, new ui.View(this._window, app.Project.name+'DetailView', html, css)));
-		});
-
-		await rest.get('/web/html/JobList.html').then(html => {
-			repo.add(new app.JobListCtrl(repo, new ui.View(this._window, app.Job.name+'ListView', html, css)));
-		});
-
-		await rest.get(`/web/html/JobDetail.html`).then(html => {
-			repo.add(new app.JobDetailCtrl(repo, new ui.View(this._window, app.Job.name+'DetailView', html, css)));
-		});
-
-		await rest.get('/web/html/JobResultList.html').then(html => {
-			repo.add(new app.JobResultListCtrl(repo, new ui.View(this._window, app.JobResult.name+'ListView', html, css)));
-		});
-
-		await rest.get(`/web/html/JobResultDetail.html`).then(html => {
-			repo.add(new app.JobResultDetailCtrl(repo, new ui.View(this._window, app.JobResult.name+'DetailView', html, css)));
+		await rest.get(`/web/html/BuildDetail.html`).then(html => {
+			repo.add(new app.BuildDetailCtrl(repo, new ui.View(this._window, app.Build.name+'DetailView', html, css)));
 		});
 
 		return router;

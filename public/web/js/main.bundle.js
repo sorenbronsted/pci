@@ -3528,7 +3528,7 @@ eval("module.exports = Object.assign(\n\t__webpack_require__(/*! ./Anchor.js */ 
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = Object.assign(\n\t\t__webpack_require__(/*! ./AppMenu.js */ \"./public/web/src/AppMenu.js\"),\n\t\t__webpack_require__(/*! ./Project.js */ \"./public/web/src/Project.js\"),\n\t\t__webpack_require__(/*! ./Job.js */ \"./public/web/src/Job.js\"),\n\t\t__webpack_require__(/*! ./JobResult.js */ \"./public/web/src/JobResult.js\"),\n);\n\n//# sourceURL=webpack:///./public/web/src/App.js?");
+eval("module.exports = Object.assign(\n\t\t__webpack_require__(/*! ./AppMenu.js */ \"./public/web/src/AppMenu.js\"),\n\t\t__webpack_require__(/*! ./Build.js */ \"./public/web/src/Build.js\"),\n);\n\n//# sourceURL=webpack:///./public/web/src/App.js?");
 
 /***/ }),
 
@@ -3543,25 +3543,14 @@ eval("const m = __webpack_require__(/*! webui.js/lib/src/menu */ \"./node_module
 
 /***/ }),
 
-/***/ "./public/web/src/Job.js":
-/*!*******************************!*\
-  !*** ./public/web/src/Job.js ***!
-  \*******************************/
+/***/ "./public/web/src/Build.js":
+/*!*********************************!*\
+  !*** ./public/web/src/Build.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const mvc = __webpack_require__(/*! webui.js/lib/src/mvc */ \"./node_modules/webui.js/lib/src/mvc/index.js\");\nconst ui = __webpack_require__(/*! webui.js/lib/src/ui */ \"./node_modules/webui.js/lib/src/ui/index.js\");\n\nclass JobListCtrl extends mvc.ListController {\n\tconstructor(model, view) {\n\t\tsuper('/list/' + Job.name, model, view);\n\t}\n\n\tpopulateStateMachine() {\n\t\tsuper.populateStateMachine();\n\t\tthis.addTransition(new mvc.Transition(this.states.input, this.states.start, this.home, this.isEventHome));\n\t}\n\n\tisEventHome(event) {\n\t\treturn event.name === 'home';\n\t}\n\n\thome(event) {\n\t\tthis.repo.get(mvc.Router.name).goto('/list/Project');\n\t}\n}\nexports.JobListCtrl = JobListCtrl;\n\nclass JobDetailCtrl extends mvc.DetailController {\n\tconstructor(model, view) {\n\t\tsuper('/detail/' + Job.name, model, view);\n\t}\n}\n\nexports.JobDetailCtrl = JobDetailCtrl;\n\nclass Job extends mvc.CrudProxy {\n\tconstructor(store) {\n\t\tsuper(store);\n\t\tthis.project_uid = null;\n\t}\n\n\tcreate() {\n\t\tconst uid = 0;\n\t\tthis.add({\n\t\t\tuid: uid,\n\t\t\tproject_uid: this.project_uid,\n\t\t\tclass: Job.name,\n\t\t});\n\t\tthis.fire(new mvc.Event(this.cls, this.eventOk, this.get(uid)));\n\t}\n}\nexports.Job = Job;\n\n//# sourceURL=webpack:///./public/web/src/Job.js?");
-
-/***/ }),
-
-/***/ "./public/web/src/JobResult.js":
-/*!*************************************!*\
-  !*** ./public/web/src/JobResult.js ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("const collect = __webpack_require__(/*! collect.js */ \"./node_modules/collect.js/dist/index.js\");\nconst mvc = __webpack_require__(/*! webui.js/lib/src/mvc */ \"./node_modules/webui.js/lib/src/mvc/index.js\");\nconst ui = __webpack_require__(/*! webui.js/lib/src/ui */ \"./node_modules/webui.js/lib/src/ui/index.js\");\n\nclass JobResultListCtrl extends mvc.ListController {\n\tconstructor(model, view) {\n\t\tsuper('/list/'+JobResult.name, model, view);\n\t}\n\n\tpopulateStateMachine() {\n\t\tsuper.populateStateMachine();\n\t\tthis.addTransition(new mvc.Transition(this.states.input, this.states.input, this.build, this.isEventBuild));\n\t\tthis.addTransition(new mvc.Transition(this.states.input, this.states.start, this.home, this.isEventHome));\n\t}\n\n\tisEventHome(event) {\n\t\treturn event.name === 'home';\n\t}\n\n\thome(event) {\n\t\tthis.repo.get(mvc.Router.name).goto('/list/Project');\n\t}\n\n\tisEventBuild(event) {\n\t\treturn event.name === 'build';\n\t}\n\n\tbuild(event) {\n\t\tthis.repo.get(JobResult.name).build();\n\t}\n}\nexports.JobResultListCtrl = JobResultListCtrl;\n\nclass JobResultDetailCtrl extends mvc.DetailController {\n\tconstructor(model, view) {\n\t\tsuper('/detail/'+JobResult.name, model, view);\n\t}\n}\nexports.JobResultDetailCtrl = JobResultDetailCtrl;\n\nclass JobResult extends mvc.CrudProxy {\n\tconstructor(store) {\n\t\tsuper(store);\n\t\tthis.project_uid = null;\n\t}\n\n\tbuild() {\n\t\tthis._store.read('Project', collect({uid:this.project_uid, user:'ui'}), 'buildInBackground');\n\t}\n}\nexports.JobResult = JobResult;\n\n//# sourceURL=webpack:///./public/web/src/JobResult.js?");
+eval("const mvc = __webpack_require__(/*! webui.js/lib/src/mvc */ \"./node_modules/webui.js/lib/src/mvc/index.js\");\nconst ui = __webpack_require__(/*! webui.js/lib/src/ui */ \"./node_modules/webui.js/lib/src/ui/index.js\");\n\nclass BuildListCtrl extends mvc.ListController {\n\tconstructor(model, view) {\n\t\tsuper('/list/'+Build.name, model, view);\n\t}\n}\nexports.BuildListCtrl = BuildListCtrl;\n\nclass BuildListView extends ui.View {\n\tconstructor(window, html, css) {\n\t\tsuper(window, Build.name+'ListView', html, css);\n\t}\n\n\tonTableRow(tr, row) {\n\t\tswitch (row.state) {\n\t\t\tcase 2:\n\t\t\t\ttr.classList.add('w3-pale-green');\n\t\t\t\tbreak;\n\t\t\tcase 3:\n\t\t\t\ttr.classList.add('w3-pale-red');\n\t\t\t\tbreak;\n\t\t}\n\t}\n}\nexports.BuildListView = BuildListView;\n\n\n\nclass BuildDetailCtrl extends mvc.DetailController {\n\tconstructor(model, view) {\n\t\tsuper('/detail/'+Build.name, model, view);\n\t}\n}\nexports.BuildDetailCtrl = BuildDetailCtrl;\n\nclass Build extends mvc.CrudProxy {\n\tconstructor(store) {\n\t\tsuper(store);\n\t}\n}\nexports.Build = Build;\n\n//# sourceURL=webpack:///./public/web/src/Build.js?");
 
 /***/ }),
 
@@ -3572,18 +3561,7 @@ eval("const collect = __webpack_require__(/*! collect.js */ \"./node_modules/col
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const mvc = __webpack_require__(/*! webui.js/lib/src/mvc */ \"./node_modules/webui.js/lib/src/mvc/index.js\");\nconst ui = __webpack_require__(/*! webui.js/lib/src/ui */ \"./node_modules/webui.js/lib/src/ui/index.js\");\nconst app = __webpack_require__(/*! ./App.js */ \"./public/web/src/App.js\");\n\nclass PciApp extends mvc.App {\n\tconstructor(httpCtor, formCtor, window) {\n\t\tsuper();\n\t\tthis._httpCtor = httpCtor;\n\t\tthis._formCtor = formCtor;\n\t\tthis._window = window;\n\t}\n\n\tasync _init() {\n\t\tlet rest   = new mvc.Rest(this._httpCtor);\n\t\tlet store  = new mvc.RestStore(rest, this._formCtor);\n\t\tlet css    = new ui.CssDelegate(new ui.InputCssW3(), new ui.AnchorCssW3(), new ui.TableCssW3(this._window.document), new ui.ViewCssW3());\n\t\tlet router = new mvc.Router(this._window);\n\n\t\t// Add elements to repo\n\t\tlet repo = new mvc.Repo();\n\t\trepo.add(router);\n\t\trepo.add(new mvc.CurrentViewState());\n\t\trepo.add(new app.Project(store));\n\t\trepo.add(new app.Job(store));\n\t\trepo.add(new app.JobResult(store));\n\n\t\t// Load views and add controllers\n\t\tawait rest.get('/web/html/ProjectList.html').then(html => {\n\t\t\trepo.add(new app.ProjectListCtrl(repo, new app.ProjectListView(this._window, html, css)));\n\t\t});\n\n\t\tawait rest.get(`/web/html/ProjectDetail.html`).then(html => {\n\t\t\trepo.add(new app.ProjectDetailCtrl(repo, new ui.View(this._window, app.Project.name+'DetailView', html, css)));\n\t\t});\n\n\t\tawait rest.get('/web/html/JobList.html').then(html => {\n\t\t\trepo.add(new app.JobListCtrl(repo, new ui.View(this._window, app.Job.name+'ListView', html, css)));\n\t\t});\n\n\t\tawait rest.get(`/web/html/JobDetail.html`).then(html => {\n\t\t\trepo.add(new app.JobDetailCtrl(repo, new ui.View(this._window, app.Job.name+'DetailView', html, css)));\n\t\t});\n\n\t\tawait rest.get('/web/html/JobResultList.html').then(html => {\n\t\t\trepo.add(new app.JobResultListCtrl(repo, new ui.View(this._window, app.JobResult.name+'ListView', html, css)));\n\t\t});\n\n\t\tawait rest.get(`/web/html/JobResultDetail.html`).then(html => {\n\t\t\trepo.add(new app.JobResultDetailCtrl(repo, new ui.View(this._window, app.JobResult.name+'DetailView', html, css)));\n\t\t});\n\n\t\treturn router;\n\t}\n}\nexports.PciApp = PciApp;\n\n//# sourceURL=webpack:///./public/web/src/PciApp.js?");
-
-/***/ }),
-
-/***/ "./public/web/src/Project.js":
-/*!***********************************!*\
-  !*** ./public/web/src/Project.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("const mvc = __webpack_require__(/*! webui.js/lib/src/mvc */ \"./node_modules/webui.js/lib/src/mvc/index.js\");\nconst ui = __webpack_require__(/*! webui.js/lib/src/ui */ \"./node_modules/webui.js/lib/src/ui/index.js\");\n\nclass ProjectListCtrl extends mvc.ListController {\n\tconstructor(model, view) {\n\t\tsuper('/list/'+Project.name, model, view);\n\t}\n}\nexports.ProjectListCtrl = ProjectListCtrl;\n\nclass ProjectListView extends ui.View {\n\tconstructor(window, html, css) {\n\t\tsuper(window, Project.name+'ListView', html, css);\n\t}\n\n\tonTableCellLink(cell, link, cls, property, row) {\n\t\tif (link.href.match('JobResult')) {\n\t\t\tlink.text = 'builds';\n\t\t}\n\t\telse if (link.href.match('Job')) {\n\t\t\tlink.text = 'jobs';\n\t\t}\n\t}\n}\nexports.ProjectListView = ProjectListView;\n\n\n\nclass ProjectDetailCtrl extends mvc.DetailController {\n\tconstructor(model, view) {\n\t\tsuper('/detail/'+Project.name, model, view);\n\t}\n}\nexports.ProjectDetailCtrl = ProjectDetailCtrl;\n\nclass Project extends mvc.CrudProxy {\n\tconstructor(store) {\n\t\tsuper(store);\n\t}\n}\nexports.Project = Project;\n\n//# sourceURL=webpack:///./public/web/src/Project.js?");
+eval("const mvc = __webpack_require__(/*! webui.js/lib/src/mvc */ \"./node_modules/webui.js/lib/src/mvc/index.js\");\nconst ui = __webpack_require__(/*! webui.js/lib/src/ui */ \"./node_modules/webui.js/lib/src/ui/index.js\");\nconst app = __webpack_require__(/*! ./App.js */ \"./public/web/src/App.js\");\n\nclass PciApp extends mvc.App {\n\tconstructor(httpCtor, formCtor, window) {\n\t\tsuper();\n\t\tthis._httpCtor = httpCtor;\n\t\tthis._formCtor = formCtor;\n\t\tthis._window = window;\n\t}\n\n\tasync _init() {\n\t\tlet rest   = new mvc.Rest(this._httpCtor);\n\t\tlet store  = new mvc.RestStore(rest, this._formCtor);\n\t\tlet css    = new ui.CssDelegate(new ui.InputCssW3(), new ui.AnchorCssW3(), new ui.TableCssW3(this._window.document), new ui.ViewCssW3());\n\t\tlet router = new mvc.Router(this._window);\n\n\t\t// Add elements to repo\n\t\tlet repo = new mvc.Repo();\n\t\trepo.add(router);\n\t\trepo.add(new mvc.CurrentViewState());\n\t\trepo.add(new app.Build(store));\n\n\t\t// Load views and add controllers\n\t\tawait rest.get('/web/html/BuildList.html').then(html => {\n\t\t\trepo.add(new app.BuildListCtrl(repo, new app.BuildListView(this._window, html, css)));\n\t\t});\n\n\t\tawait rest.get(`/web/html/BuildDetail.html`).then(html => {\n\t\t\trepo.add(new app.BuildDetailCtrl(repo, new ui.View(this._window, app.Build.name+'DetailView', html, css)));\n\t\t});\n\n\t\treturn router;\n\t}\n}\nexports.PciApp = PciApp;\n\n//# sourceURL=webpack:///./public/web/src/PciApp.js?");
 
 /***/ }),
 
@@ -3594,7 +3572,7 @@ eval("const mvc = __webpack_require__(/*! webui.js/lib/src/mvc */ \"./node_modul
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const PciApp = __webpack_require__(/*! ./PciApp.js */ \"./public/web/src/PciApp.js\").PciApp;\n\nwindow.onerror = (error) => {\n\twindow.alert(error);\n};\nlet app = new PciApp(XMLHttpRequest, FormData, window);\napp.run('/list/Project');\n\n\n//# sourceURL=webpack:///./public/web/src/main.js?");
+eval("const PciApp = __webpack_require__(/*! ./PciApp.js */ \"./public/web/src/PciApp.js\").PciApp;\n\nwindow.onerror = (error) => {\n\twindow.alert(error);\n};\nlet app = new PciApp(XMLHttpRequest, FormData, window);\napp.run('/list/Build');\n\n\n//# sourceURL=webpack:///./public/web/src/main.js?");
 
 /***/ })
 

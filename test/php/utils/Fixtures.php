@@ -3,6 +3,10 @@ namespace sbronsted;
 
 class Fixtures {
 
+	public static function pushMasterRequest() {
+		return file_get_contents(__DIR__.'/push_master.txt');
+	}
+
 	public static function getProject() : Project {
 		$o = new Project();
 		$o->name = 'Sletmig';

@@ -1,0 +1,2 @@
+<?php
+file_put_contents('/tmp/dump.txt',file_get_contents("php://input"));

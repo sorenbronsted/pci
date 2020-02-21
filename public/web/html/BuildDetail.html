@@ -1,0 +1,41 @@
+<section id="BuildDetail">
+	<form data-class="Build">
+		<section class="w3-bar w3-card-2 w3-margin-top">
+			<button name="rebuild" class="w3-bar-item w3-button w3-blue">Rebuild</button>
+		</section>
+
+		<section id="build" class="w3-container w3-cell w3-card-2 w3-margin-top w3-margin-right w3-left default-width">
+			<h4>Build</h4>
+			<div class="w3-padding-16">
+
+				<label for="created" class="w3-label w3-text-gray">Created</label>
+				<input id="created" data-property="created" data-type="datetime" data-format="DD-MM-YYYY HH:MM:SS" class="w3-input" disabled>
+
+				<label for="start" class="w3-label w3-text-gray">Start</label>
+				<input id="start" data-property="start" data-type="datetime" data-format="DD-MM-YYYY HH:MM:SS" class="w3-input" disabled>
+
+				<label for="stop" class="w3-label w3-text-gray">Stop</label>
+				<input id="stop" data-property="stop" data-type="datetime" data-format="DD-MM-YYYY HH:MM:SS" class="w3-input" disabled>
+
+				<label for="user" class="w3-label w3-text-gray">User</label>
+				<input id="user" data-property="user" class="w3-input" disabled>
+
+				<label for="repo" class="w3-label w3-text-gray">Repository</label>
+				<input id="repo" data-property="repo" class="w3-input" disabled>
+
+				<label for="ref" class="w3-label w3-text-gray">Ref</label>
+				<input id="ref" data-property="ref" class="w3-input" disabled>
+
+				<label for="state" class="w3-label w3-text-gray">State</label>
+				<input id="state" data-property="state" class="w3-input" disabled>
+			</div>
+		</section>
+
+		<section id="result" class="w3-container w3-cell w3-card-2 w3-margin-top w3-margin-right w3-left">
+			<h4>Result</h4>
+			<div class="w3-padding-16">
+				<textarea data-property="result" class="w3-input" rows="25" disabled></textarea>
+			</div>
+		</section>
+	</form>
+</section>

@@ -1,24 +1,28 @@
 <?php
 namespace sbronsted;
 
-// Must always be in the public directory
 use Exception;
 use RuntimeException;
 
+// Must always be in the public directory
 chdir(__DIR__);
 
 require_once 'settings.php';
 
-if (php_sapi_name() == 'cli') {
-	$dic = DiContainer::instance();
-	try {
-		if (count($argv) != 3) {
-			throw new RuntimeException('Wrong number of arguments');
-		}
-		$dic->log->debug(basename(__FILE__), "building project $argv[1] for user $argv[2]");
-		Project::build($argv[1], $argv[2]);
+$dic = DiContainer::instance();
+
+try {
+	if (empty($_POST['payload'])) {
+		throw new RuntimeException('Empty payload');
 	}
-	catch(Exception $e) {
-		$dic->log->error(basename(__FILE__), $e->getMessage());
-	}
+	Build::create(json_decode($_POST['payload']));
+
+	$cmd = "nohup php ./work.php > /dev/null 2>&1 &";
+	$dic->log->debug(__CLASS__,"$cmd");
+	shell_exec($cmd);
+}
+catch(Exception $e) {
+	$dic->log->error(__CLASS__, $e->getMessage());
+	$dic->log->error(__CLASS__, $e->getTraceAsString());
+	$dic->header->out($_SERVER['SERVER_PROTOCOL']. " 500 ".$e->getMessage());
 }

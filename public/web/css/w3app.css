@@ -90,3 +90,11 @@ select {
 .full {
     width: 100%;
 }
+
+#build {
+    width: 25%;
+}
+
+#result {
+    width: 73%;
+}

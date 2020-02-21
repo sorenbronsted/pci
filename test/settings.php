@@ -10,4 +10,3 @@ openlog("pci", LOG_PID | LOG_CONS, LOG_LOCAL0);
 $dic = DiContainer::instance();
 $dic->config = new Config2(__DIR__.'/pci.ini');
 $dic->log = Log::createFromConfig();
-
