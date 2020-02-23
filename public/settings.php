@@ -10,4 +10,4 @@ $dic->executer = new Executer();
 $dic->header = new Header(); // Required by this library
 
 date_default_timezone_set("Europe/Copenhagen");
-openlog("ufds-pci", LOG_PID | LOG_CONS, LOG_LOCAL0);
+openlog("pci", LOG_PID | LOG_CONS, LOG_LOCAL0);

@@ -5,11 +5,7 @@ debian/*debhelper*
 debian/*substvars*
 doc/coverage
 vendor
-public/.pub
-public/**/.packages
-public/**/packages
-public/**/build
-public/client/main.dart.*
+public/web/js/main.bundle.js
 *.sql.gz
 *.tgz
 *~

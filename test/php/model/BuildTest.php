@@ -9,6 +9,7 @@ class BuildTest extends TestCase {
 
 	protected function setUp() : void {
 		Db::exec(Build::$db, "delete from build");
+		Db::exec(Build::$db, "delete from event");
 	}
 
 	public function testCreate() {

@@ -2,6 +2,7 @@
 namespace sbronsted;
 
 use RuntimeException;
+use stdClass;
 
 class Build extends ModelObject {
 
@@ -49,6 +50,22 @@ class Build extends ModelObject {
 		return $build;
 	}
 
+	public function save(): void {
+		$body = new stdClass();
+		$operation = $this->uid == 0 ? Event::CREATE : Event::UPDATE;
+		foreach ($this->getChanged() as $name) {
+			$body->$name = is_object($this->$name) ? $this->$name->tostring() : $this->$name;
+		}
+		parent::save();
+		Event::add($this, $operation, $body);
+	}
+
+	public function destroy(): void {
+		parent::destroy();
+		Event::add($this, Event::DELETE);
+	}
+
+
 	public function run() {
 		// git pull or clone
 		$branch = basename($this->ref);
@@ -56,7 +73,7 @@ class Build extends ModelObject {
 		$dir = $dic->config->build_root.'/'.$this->user.'/'.$this->repo.'/'.$branch;
 		$this->ensureDir($dir);
 		if (!file_exists($dir.'/.git')) {
-			$cmd = "git clone --branch $branch $this->clone_url";
+			$cmd = "git clone --branch $branch $this->clone_url .";
 		}
 		else {
 			$cmd = 'git pull';
@@ -73,7 +90,7 @@ class Build extends ModelObject {
 			$this->result .= $dic->executer->run($cmd);
 
 			if (!file_exists('Makefile')) {
-				throw new RuntimeException("No makefile, so nothing to do");
+				throw new RuntimeException("No makefile, nothing to do");
 			}
 
 			$this->result .= "make\n";

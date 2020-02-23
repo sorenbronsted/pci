@@ -15,11 +15,13 @@ class PciApp extends mvc.App {
 		let store  = new mvc.RestStore(rest, this._formCtor);
 		let css    = new ui.CssDelegate(new ui.InputCssW3(), new ui.AnchorCssW3(), new ui.TableCssW3(this._window.document), new ui.ViewCssW3());
 		let router = new mvc.Router(this._window);
+		let serverEvent = new app.ServerEvent();
 
 		// Add elements to repo
 		let repo = new mvc.Repo();
 		repo.add(router);
 		repo.add(new mvc.CurrentViewState());
+		repo.add(serverEvent);
 		repo.add(new app.Build(store));
 
 		// Load views and add controllers
@@ -30,6 +32,8 @@ class PciApp extends mvc.App {
 		await rest.get(`/web/html/BuildDetail.html`).then(html => {
 			repo.add(new app.BuildDetailCtrl(repo, new ui.View(this._window, app.Build.name+'DetailView', html, css)));
 		});
+
+		await serverEvent.run();
 
 		return router;
 	}
