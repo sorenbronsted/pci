@@ -4,6 +4,9 @@
   "license": "GPL",
 
   "config": {
+    "platform": {
+      "php": "7.2"
+    }
   },
 
   "autoload": {
@@ -11,6 +14,7 @@
   },
 
   "require": {
+    "php": "7.2",
     "ruckusing/ruckusing-migrations": "^1.1",
     "sbronsted/libdatabase": "^2.1",
     "sbronsted/librest": "^4.1",
@@ -18,6 +22,6 @@
   },
 
   "require-dev": {
-    "phpunit/phpunit": "^9.0"
+    "phpunit/phpunit": "^8.0"
   }
 }
