@@ -1,3 +1,11 @@
+pci (2.0) eoan; urgency=medium
+
+  * Ported to webui.js
+  * Rewrite and ported to webui.js
+  * Added server sent events
+
+ -- Søren Brønsted <sb@ufds.dk>  Sun, 23 Feb 2020 17:37:41 +0100
+
 pci (1.1) bionic; urgency=medium
 
   * Upgrade version in ui
