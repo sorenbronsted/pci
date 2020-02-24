@@ -44,5 +44,6 @@ class BuildTest extends TestCase {
 		$this->assertEquals(1, count($dic->executer->calls));
 		$this->assertEquals(Build::FAILED, $build->state);
 		$this->assertEquals(1, preg_match('/clone/', $build->result));
+		$this->assertTrue($dic->mailer->isSent);
 	}
 }

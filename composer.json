@@ -18,7 +18,8 @@
     "ruckusing/ruckusing-migrations": "^1.1",
     "sbronsted/libdatabase": "^2.1",
     "sbronsted/librest": "^4.1",
-    "ext-json": "*"
+    "ext-json": "*",
+    "phpmailer/phpmailer": "^6.1"
   },
 
   "require-dev": {

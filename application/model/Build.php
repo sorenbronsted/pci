@@ -1,6 +1,7 @@
 <?php
 namespace sbronsted;
 
+use Exception;
 use RuntimeException;
 use stdClass;
 
@@ -104,6 +105,7 @@ class Build extends ModelObject {
 			$this->state = self::FAILED;
 			$this->stop = new Timestamp();
 			$this->save();
+			$this->notifyUser();
 		}
 	}
 
@@ -120,6 +122,30 @@ class Build extends ModelObject {
 			if ((@mkdir($dir, 0755, true)) === false) {
 				throw new RuntimeException('Failed to create dir: ' . $dir);
 			}
+		}
+	}
+
+	private function notifyUser() {
+		$dic = DiContainer::instance();
+		$recipient = $this->email;
+
+		// Do we a test scenario
+		if (trim($dic->config->email_to) != '') {
+			$recipient = $dic->config->email_to;
+		}
+
+		try {
+			$mailer = $dic->mailer;
+			$mailer->addAddress($recipient);
+			$mailer->setFrom($dic->config->email_from, 'PCI');
+			$mailer->Subject = 'Build failed';
+			$mailer->Body = 'Your build failed';
+			$mailer->CharSet = 'utf-8';
+			$mailer->send();
+		}
+		catch (Exception $e) {
+			$dic->log->error(__CLASS__, $e->getMessage());
+			throw new RuntimeException($e->getMessage());
 		}
 	}
 }
