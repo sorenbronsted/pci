@@ -1,3 +1,10 @@
+pci (2.4) eoan; urgency=medium
+
+  * Changed sorting and wrong time format
+  * Fixed user issues
+
+ -- Søren Brønsted <sb@ufds.dk>  Mon, 24 Feb 2020 11:44:54 +0100
+
 pci (2.3) eoan; urgency=medium
 
   * Changed error policy
