@@ -1,3 +1,9 @@
+pci (2.5) eoan; urgency=medium
+
+  * Cleanup build tools
+
+ -- Søren Brønsted <sb@ufds.dk>  Mon, 24 Feb 2020 12:39:47 +0100
+
 pci (2.4) eoan; urgency=medium
 
   * Changed sorting and wrong time format
