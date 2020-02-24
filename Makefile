@@ -1,37 +1,39 @@
-.PHONY:	clean test migrate generate coverage depend js package update-depend
+.PHONY:	create_db test migrate generate coverage depend js package update-depend
 
 SHELL=/bin/bash
 
 all: depend coverage satis package
 	@echo "Up-to-date"
 
-clean:
-	bin/clean.sh
+create_db:
+	mysql -uroot -proot < database/sql/drop_db.sql
+	mysql -uroot -proot < database/sql/create_db.sql
 
-test: migrate clean
-	bin/test.sh
+test: create_db migrate
+	vendor/bin/phpunit --configuration test-conf.xml
 
 testui:
-	bin/testui.sh
+	vendor/bin/phpunit --configuration testui-conf.xml
 
 migrate: 
-	bin/dbmigrate.sh $(VERSION)
+	vendor/bin/ruckus.php db:migrate
 
 # usage: make generate arg=<ClassName>
 generate:
-	bin/generate.sh $(arg)
+	vendor/bin/ruckus.php db:generate $(arg)
 
-coverage: migrate clean
-	bin/test.sh --coverage-html doc/coverage
+coverage: create_db migrate
+	vendor/bin/phpunit --configuration test-conf.xml --coverage-html doc/coverage
 
 depend:
-	bin/depend.sh install
+	bin/composer.phar install --no-progress --no-suggest
 
 update-depend:
-	bin/depend.sh update --no-progress --no-suggest
+	bin/composer.phar update --no-progress --no-suggest
 
 js:
-	bin/build.sh
+	npm ci
+	npm run bundle
 
 package: js
 	bin/package.sh
@@ -40,4 +42,4 @@ install:
 	bin/install.sh $(DESTDIR)
 
 satis:
-	bin/updatesatis.sh
+	bin/satis.phar build --quiet bin/satis.json /var/www/html/satis

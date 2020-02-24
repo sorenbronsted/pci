@@ -33,7 +33,6 @@ class BuildTest extends TestCase {
 
 	public function testRun() {
 		$dic = DiContainer::instance();
-		system("rm -fr ".$dic->config->build_root);
 
 		$dic->executer = new ExecuterMock();
 

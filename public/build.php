@@ -26,3 +26,5 @@ catch(Exception $e) {
 	$dic->log->error(__CLASS__, $e->getTraceAsString());
 	$dic->header->out($_SERVER['SERVER_PROTOCOL']. " 500 ".$e->getMessage());
 }
+echo "OK";
+
