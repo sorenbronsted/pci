@@ -90,7 +90,7 @@ class Build extends ModelObject {
 			$this->result .= $dic->executer->run($cmd);
 
 			if (!file_exists('Makefile')) {
-				throw new RuntimeException("No makefile, nothing to do");
+				throw new ExecuteException("No makefile, nothing to do", 2);
 			}
 
 			$this->result .= "make\n";
@@ -99,8 +99,9 @@ class Build extends ModelObject {
 			$this->stop = new Timestamp();
 			$this->save();
 		}
-		catch (RuntimeException $e) {
+		catch (ExecuteException $e) {
 			$this->result .= $e->getMessage()."\n";
+			$this->result .= "Exit code: ".$e->getCode()."\n";
 			$this->state = self::FAILED;
 			$this->stop = new Timestamp();
 			$this->save();
