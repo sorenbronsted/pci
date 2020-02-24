@@ -17,7 +17,7 @@ try {
 	}
 	Build::create(json_decode($_POST['payload']));
 
-	$cmd = "nohup php ./work.php > /dev/null 2>&1 &";
+	$cmd = "nohup sudo -iu pci php ".__DIR__."/work.php > /dev/null 2>&1 &";
 	$dic->log->debug(__CLASS__,"$cmd");
 	shell_exec($cmd);
 }
