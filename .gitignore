@@ -10,3 +10,4 @@ public/web/js/main.bundle.js
 *.tgz
 *~
 /node_modules/
+.phpunit.result.cache
