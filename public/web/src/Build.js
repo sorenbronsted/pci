@@ -54,6 +54,8 @@ exports.BuildDetailCtrl = BuildDetailCtrl;
 class Build extends mvc.CrudProxy {
 	constructor(store) {
 		super(store);
+		this.sortBy = 'create';
+		this.sortAsc = false;
 	}
 }
 exports.Build = Build;
