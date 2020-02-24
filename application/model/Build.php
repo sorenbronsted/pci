@@ -41,10 +41,10 @@ class Build extends ModelObject {
 		$build->ref = $payload->ref;
 		$build->repo = $payload->repository->name;
 		$build->clone_url = $payload->repository->clone_url;
-		$build->user = $payload->repository->owner->username;
-		$build->name = $payload->repository->owner->full_name;
-		$build->email = $payload->repository->owner->email;
-		$build->avatar_url = $payload->repository->owner->avatar_url;
+		$build->user = $payload->sender->username;
+		$build->name = $payload->sender->full_name;
+		$build->email = $payload->sender->email;
+		$build->avatar_url = $payload->sender->avatar_url;
 		$build->state = self::READY;
 		$build->created = new Timestamp();
 		$build->save();
@@ -62,7 +62,7 @@ class Build extends ModelObject {
 	}
 
 	public function destroy(): void {
-		Event::destroyBy('build_uid = '.$this->uid);
+		Event::destroyBy(['build_uid' => $this->uid]);
 		parent::destroy();
 	}
 
