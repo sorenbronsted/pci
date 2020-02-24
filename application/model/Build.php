@@ -62,10 +62,9 @@ class Build extends ModelObject {
 	}
 
 	public function destroy(): void {
+		Event::destroyBy('build_uid = '.$this->uid);
 		parent::destroy();
-		Event::add($this, Event::DELETE);
 	}
-
 
 	public function run() {
 		// git pull or clone
