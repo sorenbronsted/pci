@@ -1,3 +1,9 @@
+pci (2.3) eoan; urgency=medium
+
+  * Changed error policy
+
+ -- Søren Brønsted <sb@ufds.dk>  Mon, 24 Feb 2020 09:21:50 +0100
+
 pci (2.2) eoan; urgency=medium
 
   * Fixed error on delete
