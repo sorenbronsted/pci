@@ -25,10 +25,10 @@ class BuildTest extends TestCase {
 		$this->assertEquals($pr->ref, $build->ref);
 		$this->assertEquals($pr->repository->name, $build->repo);
 		$this->assertEquals($pr->repository->clone_url, $build->clone_url);
-		$this->assertEquals($pr->repository->owner->username, $build->user);
-		$this->assertEquals($pr->repository->owner->full_name, $build->name);
-		$this->assertEquals($pr->repository->owner->email, $build->email);
-		$this->assertEquals($pr->repository->owner->avatar_url, $build->avatar_url);
+		$this->assertEquals($pr->sender->username, $build->user);
+		$this->assertEquals($pr->sender->full_name, $build->name);
+		$this->assertEquals($pr->sender->email, $build->email);
+		$this->assertEquals($pr->sender->avatar_url, $build->avatar_url);
 	}
 
 	public function testRun() {
