@@ -1,3 +1,9 @@
+pci (2.7) eoan; urgency=medium
+
+  * Fixed detecting client disconnect
+
+ -- Søren Brønsted <sb@ufds.dk>  Mon, 24 Feb 2020 13:59:14 +0100
+
 pci (2.6) eoan; urgency=medium
 
   * Fixed committer info and fail delete
