@@ -23,12 +23,10 @@ class ServerEvent extends mvc.Subject {
 	}
 
 	_onMessage(e) {
-		//console.log("onmessage");
 		this.fire(new mvc.Event(ServerEvent.name, this.eventMesssageOk, e.data));
 	}
 
 	_onError(e) {
-		//console.log("onerror");
 		this.fire(new mvc.Event(ServerEvent.name, this.eventMesssageFail));
 	}
 }

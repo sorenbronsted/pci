@@ -10,13 +10,15 @@ $last = new Timestamp();
 while (connection_aborted() == 0) {
 	$now = new Timestamp();
 
+	// This is for detecting client disconnect
+	echo "event: ping\n\n";
+
 	$events = Event::getWhere("created > ?", [$last]);
 	foreach ($events as $event) {
 		echo "data: ".$event->body."\n\n";
 	}
-	while (ob_get_level() > 0) {
-		ob_end_flush();
-	}
+
+	ob_flush();
 	flush();
 	sleep(5);
 	$last = $now;
