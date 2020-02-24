@@ -1,3 +1,11 @@
+pci (2.1) eoan; urgency=medium
+
+  * Fixed platform php
+  * Added mail sent on failed build
+  * Fixed error on delete
+
+ -- Søren Brønsted <sb@ufds.dk>  Mon, 24 Feb 2020 08:28:52 +0100
+
 pci (2.0) eoan; urgency=medium
 
   * Ported to webui.js
