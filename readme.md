@@ -19,3 +19,5 @@ and content type must be
 application/x-www-form-urlencoded
 ```
 and the only trigger is `push`
+
+Remember to set `/var/www/pci/public/settings.php` to `/etc/ufds/pci_prod.ini`
