@@ -13,7 +13,7 @@ while (connection_aborted() == 0) {
 	// This is for detecting client disconnect
 	echo "event: ping\n\n";
 
-	$events = Event::getWhere("created > ?", [$last]);
+	$events = Event::getWhere("created >= ?", [$last]);
 	foreach ($events as $event) {
 		echo "data: ".$event->body."\n\n";
 	}

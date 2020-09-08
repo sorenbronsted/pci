@@ -68,7 +68,8 @@ class Build extends ModelObject {
 
 	public function run() {
 		// git pull or clone
-		$branch = basename($this->ref);
+		$parts = explode('/', urldecode($this->ref));
+		$branch = array_slice($parts, 2);
 		$dic = DiContainer::instance();
 		$dir = $dic->config->build_root.'/'.$this->user.'/'.$this->repo.'/'.$branch;
 		$this->ensureDir($dir);
